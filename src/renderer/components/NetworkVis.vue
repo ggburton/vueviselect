@@ -6,7 +6,6 @@
 
 <script>
 import vis from 'vis/dist/vis.js'
-import axios from 'axios'
 
 export default {
   name: 'network-vis',
@@ -24,7 +23,7 @@ export default {
           },
           offline: {
             shape: 'image',
-            image: 'static/switchOffine.png'
+            image: 'static/switchOffline.png'
           }
         }
       },
@@ -37,12 +36,18 @@ export default {
       window.network.setData({ nodes: this.nodes, edges: this.edges })
     },
     fetchAllSwitchData () {
-      axios.get('http://172.16.5.253:8000/api/switch/').then(response => {
+      this.$http.get('http://172.16.5.253:8000/api/switch/').then(response => {
         response.data.forEach(function (element) {
+          var image = ''
+          if (element.online === true) {
+            image = 'online'
+          } else {
+            image = 'offline'
+          }
           const node = {
             id: element.id,
             label: element.name,
-            group: 'online'
+            group: image
           }
           this.nodes.push(node)
           if (element.parent !== null) {
@@ -62,6 +67,7 @@ export default {
       if (event.nodes[0] !== undefined) {
         console.log(event.nodes[0])
         this.selected = event.nodes[0]
+        this.$emit('setCurrent', this.selected)
       }
     }
   },
@@ -82,11 +88,9 @@ export default {
 
 <style>
 
-
-
   #network {
-    width: 50%;
     height: 450px;
+    width: 500px;
     border: 1px solid black;
     background-color: white;
   }

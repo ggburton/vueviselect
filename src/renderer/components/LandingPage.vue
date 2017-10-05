@@ -1,28 +1,42 @@
 <template>
   <div id="wrapper">
-    <network-vis></network-vis>
+    <div class="container">
+      <network-vis v-on:setCurrent="setCurrent($event)"></network-vis>
+      <switch-details :current-id="activeSwitchId"></switch-details>
+    </div>
   </div>
 </template>
 
 <script>
   import NetworkVis from './NetworkVis.vue'
+  import SwitchDetails from './SwitchDetails.vue'
+
   export default {
     name: 'landing-page',
+    data () {
+      return {
+        activeSwitchId: null
+      }
+    },
     methods: {
       open (link) {
         this.$electron.shell.openExternal(link)
+      },
+      setCurrent (event) {
+        this.activeSwitchId = event
       }
     },
     components: {
-      NetworkVis
+      NetworkVis,
+      SwitchDetails
     }
   }
 </script>
 
 <style>
 
-  #wrapper {
-    background-color: black;
-  }
+ .container {
+   display: flex;
+ }
 
 </style>
