@@ -16,6 +16,12 @@ export default {
       edges: [],
       selected: null,
       options: {
+        nodes: {
+          font: {
+            color: 'white',
+            size: 18
+          }
+        },
         groups: {
           online: {
             shape: 'image',
@@ -36,7 +42,7 @@ export default {
       window.network.setData({ nodes: this.nodes, edges: this.edges })
     },
     fetchAllSwitchData () {
-      this.$http.get('http://172.16.5.253:8000/api/switch/').then(response => {
+      this.$http.get('http://localhost:8000/api/switch/').then(response => {
         response.data.forEach(function (element) {
           var image = ''
           if (element.online === true) {
@@ -91,7 +97,9 @@ export default {
   #network {
     height: 450px;
     width: 500px;
-    border: 1px solid black;
-    background-color: white;
+    border: 3px solid #9d0000;
+    border-radius: 5px;
+    background-color: #303030;
+    color: white;
   }
 </style>

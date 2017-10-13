@@ -12,5 +12,8 @@
 
 <style>
 
+#app {
+  background-color: #1e1e1e;
+}
 
 </style>

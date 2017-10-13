@@ -1,18 +1,26 @@
 <template>
   <div v-if="wSwitch" class="data-grid">
-    <h1>{{ wSwitch.name }}</h1>
-    <table>
-      <tr>
-        <td>IP Address</td>
-        <td>{{wSwitch.ipAddress}}</td>
-      </tr>
-      <tr>
-        <td>Parent Switch</td>
-        <td>{{wSwitch.parent}}</td>
-      </tr>
-        <td>Last Ping</td>
-        <td>{{wSwitch.lastOnline.startOf('second').fromNow()}}</td>
-    </table>
+    <div class="panel">
+      <div class="panel-header">
+        <h1>{{ wSwitch.name }}</h1>
+      </div>
+    <div class="flex-h">
+      <table>
+        <tr>
+          <td>IP Address</td>
+          <td>{{ wSwitch.ipAddress }}</td>
+        </tr>
+        <tr>
+          <td>Parent Switch</td>
+          <td>{{ wSwitch.parent }}</td>
+        </tr>
+        <tr>
+          <td>Last Ping</td>
+          <td>{{ timeSince }}</td>
+        </tr>
+      </table>
+    </div>
+    </div>
   </div>
 </template>
 
@@ -24,14 +32,16 @@ export default {
       wSwitch: null
     }
   },
+  computed: {
+    timeSince () {
+      return this.$moment(this.wSwitch.lastOnline).startOf('second').fromNow()
+    }
+  },
   watch: {
     currentId: function (newVal, oldVal) {
-      const url = `http://172.16.5.253:8000/api/switch/${this.currentId}/`
+      const url = `http://localhost:8000/api/switch/${this.currentId}/`
       this.$http.get(url).then(result => {
-        const lastOnline = this.$moment(result.lastOnline)
-        console.log(lastOnline)
         this.wSwitch = result.data
-        this.wSwitch.lastOnline = lastOnline
       }).catch(err => {
         console.error(err)
       })
@@ -43,8 +53,42 @@ export default {
 
 <style>
 
+.panel {
+  background-color: #333333;
+  border-radius: 5px;
+  margin: 5px 5px;
+}
+
+
 .data-grid {
   width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  color: white;
+}
+
+.flex-h {
+  display: flex;
+  justify-content: center;
+  background-color: #1c1a1a;
+
+}
+
+table {
+   margin-top: 10px;
+   width: 90%;
+   border-collapse: collapse;
+   font-size: 20px;
+}
+
+tr {
+  padding: 30px;
+}
+
+td {
+  padding-left: 15px;
+  border-collapse: collapse;
 }
 
 h1 {
