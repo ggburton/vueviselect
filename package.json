@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "coreapi": "^0.1.1",
     "moment": "^2.18.1",
     "moment-timezone": "^0.5.13",
     "vis": "^4.20.1",

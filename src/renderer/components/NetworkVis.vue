@@ -42,6 +42,9 @@ export default {
       window.network.setData({ nodes: this.nodes, edges: this.edges })
     },
     fetchAllSwitchData () {
+      this.$client.action(this.schema, ['switch', 'list']).then(data => {
+        console.log('found this: ', data)
+      })
       this.$http.get('http://localhost:8000/api/switch/').then(response => {
         response.data.forEach(function (element) {
           var image = ''
@@ -78,6 +81,10 @@ export default {
     }
   },
   mounted () {
+    this.$client.get('http://localhost:8000/api').then(data => {
+      this.schema = data
+      console.log(this.schema)
+    })
     this.container = document.getElementById('network')
     let data = {
       nodes: this.nodes,
