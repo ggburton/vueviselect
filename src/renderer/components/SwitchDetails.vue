@@ -39,12 +39,9 @@ export default {
   },
   watch: {
     currentId: function (newVal, oldVal) {
-      const url = `http://localhost:8000/api/switch/${this.currentId}/`
-      this.$http.get(url).then(result => {
-        this.wSwitch = result.data
-      }).catch(err => {
-        console.error(err)
-      })
+      this.$client.action(this.$store.state.Schema.schema, ['switch', 'read'], {id: this.currentId})
+        .then(data => { this.wSwitch = data })
+        .catch(err => console.log('Opps: ', err))
     }
   }
 

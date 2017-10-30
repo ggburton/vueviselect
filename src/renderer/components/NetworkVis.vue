@@ -41,36 +41,25 @@ export default {
     updateVis () {
       window.network.setData({ nodes: this.nodes, edges: this.edges })
     },
-    fetchAllSwitchData () {
-      this.$client.action(this.schema, ['switch', 'list']).then(data => {
-        console.log('found this: ', data)
+    addNodesAndEdges (data) {
+      data.forEach(item => {
+        var image = ''
+        item.online === true ? image = 'online' : image = 'offline'
+        const node = {
+          id: item.id,
+          label: item.name,
+          group: image
+        }
+        this.nodes.push(node)
+        if (item.parent !== null) {
+          const edge = {
+            from: item.id,
+            to: item.parent
+          }
+          this.edges.push(edge)
+        }
       })
-      this.$http.get('http://localhost:8000/api/switch/').then(response => {
-        response.data.forEach(function (element) {
-          var image = ''
-          if (element.online === true) {
-            image = 'online'
-          } else {
-            image = 'offline'
-          }
-          const node = {
-            id: element.id,
-            label: element.name,
-            group: image
-          }
-          this.nodes.push(node)
-          if (element.parent !== null) {
-            const edge = {
-              from: element.id,
-              to: element.parent
-            }
-            this.edges.push(edge)
-          }
-        }, this)
-        this.updateVis()
-      }).catch(err => {
-        console.error(err)
-      })
+      this.updateVis()
     },
     setActiveSwitch (event) {
       if (event.nodes[0] !== undefined) {
@@ -81,9 +70,11 @@ export default {
     }
   },
   mounted () {
-    this.$client.get('http://localhost:8000/api').then(data => {
-      this.schema = data
-      console.log(this.schema)
+    this.$client.get('http://localhost:8000/api/').then(data => {
+      this.$store.commit('setSchema', {schema: data})
+      this.$client.action(this.$store.state.Schema.schema, ['switch', 'list']).then(this.addNodesAndEdges)
+    }).catch(err => {
+      console.error('could not get schema', err)
     })
     this.container = document.getElementById('network')
     let data = {
@@ -91,7 +82,6 @@ export default {
       edges: this.edges
     }
     window.network = new vis.Network(this.container, data, this.options)
-    this.fetchAllSwitchData()
 
     window.network.on('click', this.setActiveSwitch)
   }
