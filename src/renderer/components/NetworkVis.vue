@@ -41,15 +41,19 @@ export default {
     updateVis () {
       window.network.setData({ nodes: this.nodes, edges: this.edges })
     },
+    buildNode (nodeData) {
+      var image = ''
+      nodeData.online === true ? image = 'online' : image = 'offline'
+      const node = {
+        id: nodeData.id,
+        label: nodeData.name,
+        group: image
+      }
+      return node
+    },
     addNodesAndEdges (data) {
       data.forEach(item => {
-        var image = ''
-        item.online === true ? image = 'online' : image = 'offline'
-        const node = {
-          id: item.id,
-          label: item.name,
-          group: image
-        }
+        const node = this.buildNode(item)
         this.nodes.push(node)
         if (item.parent !== null) {
           const edge = {
@@ -84,6 +88,16 @@ export default {
     window.network = new vis.Network(this.container, data, this.options)
 
     window.network.on('click', this.setActiveSwitch)
+    this.$bridge.demultiplex('switch', (response) => {
+      console.log(response.data)
+      response.data.id = response.pk
+      const newNode = this.buildNode(response.data)
+      console.log(newNode)
+      var nodeIndex = this.nodes.findIndex(node => node.id === response.pk)
+
+      this.$set(this.nodes, nodeIndex, newNode)
+      this.updateVis()
+    })
   }
 
 }

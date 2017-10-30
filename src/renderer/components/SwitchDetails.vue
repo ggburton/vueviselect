@@ -18,6 +18,14 @@
           <td>Last Ping</td>
           <td>{{ timeSince }}</td>
         </tr>
+        <tr>
+          <td>Location</td>
+          <td>{{ wSwitch.location }}</td>
+        </tr>
+        <tr>
+          <td>Uptime (ticks)</td>
+          <td>{{ wSwitch.uptime }}</td>
+        </tr>
       </table>
     </div>
     </div>
@@ -34,7 +42,7 @@ export default {
   },
   computed: {
     timeSince () {
-      return this.$moment(this.wSwitch.lastOnline).startOf('second').fromNow()
+      return this.$moment.duration(this.wSwitch.uptime).format()
     }
   },
   watch: {
