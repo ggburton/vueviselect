@@ -1,5 +1,5 @@
 const state = {
-  schema: 'fish'
+  schema: null
 }
 
 const mutations = {

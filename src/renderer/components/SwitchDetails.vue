@@ -16,15 +16,15 @@
         </tr>
         <tr>
           <td>Last Ping</td>
-          <td>{{ timeSince }}</td>
+          <td>{{ lastPingTime }}</td>
         </tr>
         <tr>
           <td>Location</td>
           <td>{{ wSwitch.location }}</td>
         </tr>
         <tr>
-          <td>Uptime (ticks)</td>
-          <td>{{ wSwitch.uptime }}</td>
+          <td>Uptime</td>
+          <td>{{ switchUptime }}</td>
         </tr>
       </table>
     </div>
@@ -37,12 +37,16 @@ export default {
   props: ['currentId'],
   data () {
     return {
-      wSwitch: null
+      wSwitch: null,
+      uptime: null
     }
   },
   computed: {
-    timeSince () {
-      return this.$moment.duration(this.wSwitch.uptime).format()
+    lastPingTime () {
+      return this.$moment(this.wSwitch.lastPing).fromNow()
+    },
+    switchUptime () {
+      return this.$moment.duration(this.wSwitch.uptime + this.uptime).format('Y [years] M [months] D [days] HH:mm:ss')
     }
   },
   watch: {
@@ -51,6 +55,11 @@ export default {
         .then(data => { this.wSwitch = data })
         .catch(err => console.log('Opps: ', err))
     }
+  },
+  mounted () {
+    setInterval(() => {
+      this.uptime += 1000
+    }, 1000)
   }
 
 }

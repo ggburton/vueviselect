@@ -71,15 +71,20 @@ export default {
         this.selected = event.nodes[0]
         this.$emit('setCurrent', this.selected)
       }
+    },
+    getSchema () {
+      this.$client.get('http://localhost:8000/api/').then(data => {
+        this.$store.commit('setSchema', {schema: data})
+        this.$client.action(this.$store.state.Schema.schema, ['switch', 'list']).then(this.addNodesAndEdges)
+        console.log('nodes added')
+      }).catch(err => {
+        console.error('could not get schema', err)
+      })
     }
   },
   mounted () {
-    this.$client.get('http://localhost:8000/api/').then(data => {
-      this.$store.commit('setSchema', {schema: data})
-      this.$client.action(this.$store.state.Schema.schema, ['switch', 'list']).then(this.addNodesAndEdges)
-    }).catch(err => {
-      console.error('could not get schema', err)
-    })
+    console.log('mounted called')
+    this.getSchema()
     this.container = document.getElementById('network')
     let data = {
       nodes: this.nodes,
@@ -92,12 +97,18 @@ export default {
       console.log(response.data)
       response.data.id = response.pk
       const newNode = this.buildNode(response.data)
-      console.log(newNode)
       var nodeIndex = this.nodes.findIndex(node => node.id === response.pk)
 
       this.$set(this.nodes, nodeIndex, newNode)
       this.updateVis()
     })
+    if (this.$store.state.Schema.schema === 'undefined') {
+      console.log('call again')
+      this.getSchema()
+    } else {
+      console.log('schema :', this.$store.state.Schema.scema)
+    }
+    this.updateVis()
   }
 
 }

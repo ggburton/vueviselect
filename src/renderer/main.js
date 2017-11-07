@@ -8,8 +8,8 @@ import store from './store'
 import coreapi from 'coreapi'
 import { WebSocketBridge } from 'django-channels'
 
-const client = new coreapi.Client()
 const webSocketBridge = new WebSocketBridge()
+const client = new coreapi.Client()
 webSocketBridge.connect('ws://localhost:8000/binding/')
 webSocketBridge.listen()
 
