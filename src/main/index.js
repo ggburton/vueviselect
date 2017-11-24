@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, Menu } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -14,6 +14,27 @@ let mainWindow
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
+
+const menuTemplate = [
+  {
+    label: 'Spiceworks',
+    click (menuItem, currentWindow) {
+      currentWindow.webContents.send('route', {route: '/spiceworks'})
+    }
+  },
+  {
+    label: 'Network',
+    click (menuItem, currentWindow) {
+      currentWindow.webContents.send('route', {route: '/network'})
+    }
+  },
+  {
+    label: 'Chat',
+    click (menuItem, currentWindow) {
+      currentWindow.webContents.send('route', {route: '/chat'})
+    }
+  }
+]
 
 function createWindow () {
   /**
@@ -30,6 +51,8 @@ function createWindow () {
     }
   })
 
+  const menu = Menu.buildFromTemplate(menuTemplate)
+  Menu.setApplicationMenu(menu)
   mainWindow.loadURL(winURL)
 
   mainWindow.on('closed', () => {

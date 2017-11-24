@@ -45,9 +45,6 @@
       if (this.$store.getters.session_details.csrf_token !== null) {
         this.$router.push('/ticket')
       }
-      // dummy http call to get around first http call not being received
-      console.log('dummy call')
-      this.$http.get('http://localhost:8000/api/').then().catch()
     }
   }
 </script>
