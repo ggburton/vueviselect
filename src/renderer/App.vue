@@ -24,7 +24,6 @@
 <style>
 
 #app {
-  background-color: #1e1e1e;
   height: 100vh;
   width: 100%;
 }

@@ -11,14 +11,11 @@ export default {
   name: 'network-vis',
   data () {
     return {
-      network: {},
-      nodes: [],
-      edges: [],
       selected: null,
       options: {
         nodes: {
           font: {
-            color: 'white',
+            color: 'black',
             size: 18
           }
         },
@@ -38,9 +35,10 @@ export default {
     }
   },
   methods: {
-    updateVis () {
-      window.network.setData({ nodes: this.nodes, edges: this.edges })
-    },
+    // updateVis () {
+    //  const network = this.$store.getters.getNetwork
+    //  window.network.setData({ nodes: network.nodes, edges: network.edges })
+    // },
     buildNode (nodeData) {
       var image = ''
       nodeData.online === true ? image = 'online' : image = 'offline'
@@ -54,16 +52,17 @@ export default {
     addNodesAndEdges (data) {
       data.forEach(item => {
         const node = this.buildNode(item)
-        this.nodes.push(node)
+        // this.nodes.push(node)
+        this.$store.dispatch('append_node', node)
         if (item.parent !== null) {
           const edge = {
             from: item.id,
             to: item.parent
           }
-          this.edges.push(edge)
+          // this.edges.push(edge)
+          this.$store.dispatch('append_edge', edge)
         }
       })
-      this.updateVis()
     },
     setActiveSwitch (event) {
       if (event.nodes[0] !== undefined) {
@@ -84,31 +83,28 @@ export default {
   },
   mounted () {
     console.log('mounted called')
-    this.getSchema()
+    if (this.$store.getters.getSchema === null) {
+      this.getSchema()
+    }
     this.container = document.getElementById('network')
     let data = {
-      nodes: this.nodes,
-      edges: this.edges
+      nodes: null,
+      edges: null
     }
     window.network = new vis.Network(this.container, data, this.options)
 
     window.network.on('click', this.setActiveSwitch)
     this.$bridge.demultiplex('switch', (response) => {
-      console.log(response.data)
+      // because the id is in the response not the response data????????????
       response.data.id = response.pk
+      console.log(response.data)
       const newNode = this.buildNode(response.data)
-      var nodeIndex = this.nodes.findIndex(node => node.id === response.pk)
-
-      this.$set(this.nodes, nodeIndex, newNode)
-      this.updateVis()
+      this.$store.dispatch('update_node', newNode)
     })
-    if (this.$store.state.Schema.schema === 'undefined') {
-      console.log('call again')
-      this.getSchema()
-    } else {
-      console.log('schema :', this.$store.state.Schema.scema)
-    }
-    this.updateVis()
+    this.$store.watch((this.$store.getters.getNetwork, () => {
+      var network = this.$store.getters.getNetwork
+      window.network.setData({nodes: network.nodes, edges: network.edges})
+    }))
   }
 
 }
@@ -119,9 +115,8 @@ export default {
   #network {
     height: 450px;
     width: 500px;
-    border: 3px solid #9d0000;
+    border: 3px solid black;
     border-radius: 5px;
-    background-color: #303030;
     color: white;
   }
 </style>
