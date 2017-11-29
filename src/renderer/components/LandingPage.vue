@@ -8,8 +8,8 @@
 </template>
 
 <script>
-  import NetworkVis from './NetworkVis.vue'
-  import SwitchDetails from './SwitchDetails.vue'
+  import NetworkVis from './network/NetworkVis.vue'
+  import SwitchDetails from './network/SwitchDetails.vue'
 
   export default {
     name: 'landing-page',

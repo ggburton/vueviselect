@@ -1,6 +1,7 @@
 <template>
   <div>
     <div id="network"></div>
+    <router-link to="/lockoutmacs">Block Mac Address</router-link>
   </div>
 </template>
 
@@ -35,10 +36,6 @@ export default {
     }
   },
   methods: {
-    // updateVis () {
-    //  const network = this.$store.getters.getNetwork
-    //  window.network.setData({ nodes: network.nodes, edges: network.edges })
-    // },
     buildNode (nodeData) {
       var image = ''
       nodeData.online === true ? image = 'online' : image = 'offline'
@@ -74,7 +71,7 @@ export default {
     getSchema () {
       this.$client.get('http://localhost:8000/api/').then(data => {
         this.$store.commit('setSchema', {schema: data})
-        this.$client.action(this.$store.state.Schema.schema, ['switch', 'list']).then(this.addNodesAndEdges)
+        this.$client.action(this.$store.getters.getSchema, ['switch', 'list']).then(this.addNodesAndEdges)
         console.log('nodes added')
       }).catch(err => {
         console.error('could not get schema', err)
@@ -111,7 +108,6 @@ export default {
 </script>
 
 <style>
-
   #network {
     height: 450px;
     width: 500px;

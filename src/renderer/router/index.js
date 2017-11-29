@@ -6,6 +6,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/lockoutmacs',
+      name: 'lockout-macs',
+      component: require('@/components/network/LockoutMacs').default
+    },
+    {
       path: '/network',
       name: 'landing-page',
       component: require('@/components/LandingPage').default
