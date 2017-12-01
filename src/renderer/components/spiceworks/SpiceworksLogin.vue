@@ -2,7 +2,6 @@
   <div class="wrapper">
     <div>
       <h1>Login</h1>
-        <form>
           <div>
             <input type="text" placeholder="username" v-model="username">
           </div>
@@ -12,7 +11,6 @@
           <div>
             <button @click="login">Login</button>
           </div>
-        </form>
       </div>
     </div>
   </div>
@@ -36,14 +34,14 @@
           .then(response => {
             console.log(response)
             this.$store.dispatch('set_session_details', response.data)
-            this.$router.push('/ticket')
+            this.$router.push('/tickets')
           })
           .catch(err => console.log(err))
       }
     },
     mounted () {
       if (this.$store.getters.session_details.csrf_token !== null) {
-        this.$router.push('/ticket')
+        this.$router.push('/tickets')
       }
     }
   }

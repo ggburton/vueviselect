@@ -1,10 +1,11 @@
 <template>
   <div>
     <h3>Locked Mac instance</h3>
+    <div>{{lockout.lockedBy}}</div>
     <div>{{lockout.mac}}</div>
     <div>{{lockout.lockedTime}}</div>
     <div>{{lockout.reason}}</div>
-    <button @click="remove">Remove</button>
+    <button @click="remove">UnBlock</button>
   </div>
 </template>
 

@@ -2,12 +2,13 @@
   <div>
     <h3>Lockout Macs</h3>
     <locked-mac-instance v-for="item in lockedMac" :key="item.id" :lockout="item" @removed="removed"></locked-mac-instance>
-    <div>add lockout mac form here</div>
+    <router-link to="/lockoutform">Block New Mac</router-link>
   </div>
 </template>
 
 <script>
 import LockedMacInstance from './LockedMacInstance'
+import { useClient } from '../../api/core'
 
 export default {
   data () {
@@ -21,18 +22,23 @@ export default {
   methods: {
     getmacs () {
       this.lockedMac = []
-      this.$client.action(this.$store.getters.getSchema, ['lockoutMac', 'list'])
+      useClient(['lockoutMac', 'list'])
         .then(response => {
+          console.log(response)
           response.forEach(item => {
             this.lockedMac.push(item)
           })
         })
+        .catch(err => console.error(err))
     },
     removed (data) {
-      console.log('removed', data)
+      const action = ['lockoutMac', 'delete']
       const params = {'id': data}
-      this.$client.action(this.$store.getters.getSchema, ['lockoutMac', 'delete'], params)
-        .then(this.getmacs())
+      useClient(action, params)
+        .then(response => {
+          console.log(response)
+          this.getmacs()
+        })
     }
   },
   mounted () {

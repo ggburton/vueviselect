@@ -1,3 +1,4 @@
+
 const state = {
   schema: null
 }
@@ -9,13 +10,15 @@ const getters = {
 }
 
 const mutations = {
-  setSchema (state, payload) {
+  SET_SCHEMA (state, payload) {
     state.schema = payload.schema
   }
 }
 
 const actions = {
-
+  set_schema (context, payload) {
+    context.commit('SET_SCHEMA', payload)
+  }
 }
 
 export default {

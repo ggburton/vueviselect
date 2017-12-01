@@ -6,16 +6,16 @@
 </template>
 
 <script>
+import { webSocketBridge } from '../../api/websocket'
 export default {
   mounted () {
-    console.log('mounted')
-    this.$bridge.demultiplex('chat', (response) => {
-      console.log(response.data)
+    webSocketBridge.demultiplex('chat', (response) => {
+      console.log(response)
     })
   },
   methods: {
     sendMessage () {
-      this.$bridge.stream('chat').send({content: 'This is a test'})
+      webSocketBridge.stream('chat').send({content: 'This is a test'})
     }
   }
 }

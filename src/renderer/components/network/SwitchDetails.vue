@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { useClient } from '../../api/core'
 export default {
   props: ['currentId'],
   data () {
@@ -51,7 +52,9 @@ export default {
   },
   watch: {
     currentId: function (newVal, oldVal) {
-      this.$client.action(this.$store.state.Schema.schema, ['switch', 'read'], {id: this.currentId})
+      const action = ['switch', 'read']
+      const params = {id: this.currentId}
+      useClient(action, params)
         .then(data => { this.wSwitch = data })
         .catch(err => console.log('Opps: ', err))
     }

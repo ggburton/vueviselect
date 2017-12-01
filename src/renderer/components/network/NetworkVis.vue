@@ -7,6 +7,8 @@
 
 <script>
 import vis from 'vis/dist/vis.js'
+import { useClient } from '../../api/core'
+import { webSocketBridge } from '../../api/websocket'
 
 export default {
   name: 'network-vis',
@@ -49,14 +51,12 @@ export default {
     addNodesAndEdges (data) {
       data.forEach(item => {
         const node = this.buildNode(item)
-        // this.nodes.push(node)
         this.$store.dispatch('append_node', node)
         if (item.parent !== null) {
           const edge = {
             from: item.id,
             to: item.parent
           }
-          // this.edges.push(edge)
           this.$store.dispatch('append_edge', edge)
         }
       })
@@ -67,22 +67,12 @@ export default {
         this.selected = event.nodes[0]
         this.$emit('setCurrent', this.selected)
       }
-    },
-    getSchema () {
-      this.$client.get('http://localhost:8000/api/').then(data => {
-        this.$store.commit('setSchema', {schema: data})
-        this.$client.action(this.$store.getters.getSchema, ['switch', 'list']).then(this.addNodesAndEdges)
-        console.log('nodes added')
-      }).catch(err => {
-        console.error('could not get schema', err)
-      })
     }
   },
   mounted () {
-    console.log('mounted called')
-    if (this.$store.getters.getSchema === null) {
-      this.getSchema()
-    }
+    this.$store.dispatch('clear_nodes')
+    useClient(['switch', 'list'])
+      .then(this.addNodesAndEdges)
     this.container = document.getElementById('network')
     let data = {
       nodes: null,
@@ -91,7 +81,7 @@ export default {
     window.network = new vis.Network(this.container, data, this.options)
 
     window.network.on('click', this.setActiveSwitch)
-    this.$bridge.demultiplex('switch', (response) => {
+    webSocketBridge.demultiplex('switch', (response) => {
       // because the id is in the response not the response data????????????
       response.data.id = response.pk
       console.log(response.data)

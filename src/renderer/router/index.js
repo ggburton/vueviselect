@@ -1,23 +1,37 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import { requireAuth } from './routeguards'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
+      path: '/login',
+      name: 'login',
+      component: require('@/components/common/Login').default
+    },
+    {
       path: '/lockoutmacs',
       name: 'lockout-macs',
+      beforeEnter: requireAuth,
       component: require('@/components/network/LockoutMacs').default
+    },
+    {
+      path: '/lockoutform',
+      name: 'lockout-form',
+      component: require('@/components/network/LockoutMacForm').default
     },
     {
       path: '/network',
       name: 'landing-page',
+      beforeEnter: requireAuth,
       component: require('@/components/LandingPage').default
     },
     {
       path: '/chat',
       name: 'chat',
+      beforeEnter: requireAuth,
       component: require('@/components/chat/Chat').default
     },
     {
@@ -31,7 +45,7 @@ export default new Router({
       component: require('@/components/spiceworks/TicketDetail').default
     },
     {
-      path: '/ticket',
+      path: '/tickets',
       name: 'ticket',
       component: require('@/components/spiceworks/TicketList').default
     },

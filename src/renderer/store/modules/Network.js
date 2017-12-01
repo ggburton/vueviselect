@@ -1,4 +1,5 @@
 import Vue from 'vue'
+// import { client } from '../../helpers'
 
 const state = {
   network: {
@@ -27,6 +28,10 @@ const mutations = {
       console.log('these two are not equal', state.network.nodes[nodeIndex], payload)
       Vue.set(state.network.nodes, nodeIndex, payload)
     }
+  },
+  CLEAR_ALL (state) {
+    state.network.edges = []
+    state.network.nodes = []
   }
 }
 
@@ -39,6 +44,9 @@ const actions = {
   },
   update_node ({commit}, payload) {
     commit('UPDATE_NODE', payload)
+  },
+  clear_nodes ({commit}) {
+    commit ('CLEAR_ALL')
   }
 }
 
