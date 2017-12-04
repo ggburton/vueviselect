@@ -30,7 +30,8 @@ export default {
       // divide time by 60 then update call to
       // bbtickets/{{ticket.id}}/labors
       // { time_spent: mins, user_id: "my_id" }
-      this.$http.post(`http://localhost:8000/proxy/bbtickets/${ticketid}/labors/`,
+      const server = this.$store.getters.getServer
+      this.$http.post(`http://${server}/proxy/bbtickets/${ticketid}/labors/`,
         {
           time_spent: Math.floor(this.timespent / 60),
           user_id: this.$store.state.Spiceworks.session_details.user_id

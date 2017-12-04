@@ -37,7 +37,8 @@ export default {
         'body': this.body,
         'attachment': null
       }
-      this.$http.post(`http://localhost:8000/proxy/comments/`, postData)
+      const server = this.$store.getters.getServer
+      this.$http.post(`http://${server}/proxy/comments/`, postData)
         .then(response => {
           console.log(response)
           this.$emit('closeForm')

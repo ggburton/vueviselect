@@ -4,7 +4,7 @@
       <input type="text" v-model="username" placeholder="username" />
     </div>
     <div>
-      <input type="password" v-model="password" placeholder="pasword" />
+      <input type="password" v-model="password" placeholder="password" />
     </div>
     <button @click="login">Login</button>
   </div>
@@ -26,11 +26,12 @@ export default {
         'username': this.username,
         'password': this.password
       }
+      const server = this.$store.getters.getServer
       corelogin(this.username, this.password) // get a JWT
-      this.$http.post('http://localhost:8000/session-login/', payload)
+      this.$http.post(`http://${server}/session-login/`, payload)
         .then(response => {
           if (response.status === 200) {
-            this.$http.get('http://localhost:8000/get-session/')
+            this.$http.get(`http://${server}/get-session/`)
               .then(response => {
                 this.$store.dispatch('set_session_key', response.data)
                 connectSocket()

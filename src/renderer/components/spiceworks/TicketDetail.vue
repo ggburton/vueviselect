@@ -60,8 +60,9 @@ export default {
       this.addComment = !this.addComment
     },
     updateTicket () {
+      const server = this.$store.getters.getServer
       console.log('update ticket called')
-      this.$http.get(`http://localhost:8000/proxy/bbtickets/${this.$route.params.id}/`)
+      this.$http.get(`http://${server}/proxy/bbtickets/${this.$route.params.id}/`)
         .then(response => {
           console.log(response.data)
           this.ticket = response.data

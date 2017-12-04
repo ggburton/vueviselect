@@ -46,7 +46,7 @@ const actions = {
     commit('UPDATE_NODE', payload)
   },
   clear_nodes ({commit}) {
-    commit ('CLEAR_ALL')
+    commit('CLEAR_ALL')
   }
 }
 

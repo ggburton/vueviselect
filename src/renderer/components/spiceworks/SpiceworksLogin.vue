@@ -27,7 +27,8 @@
     },
     methods: {
       login () {
-        this.$http.post(`http://localhost:8000/spiceworks/`, {
+        const server = this.$store.getters.getServer
+        this.$http.post(`http://${server}/spiceworks/`, {
           username: this.username,
           password: this.password
         })

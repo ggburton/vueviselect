@@ -1,7 +1,8 @@
 
 const state = {
   token: null,
-  session_key: null
+  session_key: null,
+  server: 'localhost:8000'
 }
 
 const getters = {
@@ -10,6 +11,9 @@ const getters = {
   },
   getSessionKey (state) {
     return state.session_key
+  },
+  getServer (state) {
+    return state.server
   }
 }
 
@@ -19,6 +23,9 @@ const mutations = {
   },
   SET_SESSION_KEY (state, payload) {
     state.session_key = payload
+  },
+  SET_SERVER (state, payload) {
+    state.server = payload
   }
 }
 
@@ -29,6 +36,9 @@ const actions = {
   },
   set_session_key ({ commit }, payload) {
     commit('SET_SESSION_KEY', payload)
+  },
+  set_server ({ commit }, payload) {
+    commit('SET_BASE_URL', payload)
   }
 }
 

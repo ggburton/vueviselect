@@ -25,12 +25,13 @@ function corelogin (username, password) {
 }
 
 function getSchema () {
+  const server = store.getters.getServer
   let useclient = client
   if (store.getters.getToken !== null) {
     useclient = authclient
   }
   return new Promise((resolve, reject) => {
-    useclient.get('http://localhost:8000/api/')
+    useclient.get(`http://${server}/api/`)
       .then(data => {
         store.dispatch('set_schema', {schema: data})
         resolve()
