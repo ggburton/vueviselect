@@ -1,6 +1,6 @@
 <template>
   <div v-if="getActiveUsers">
-    <chat-user-details v-for="user in getActiveUsers" :key="user.username" :user="user"></chat-user-details>
+    <chat-user-details v-for="user in getActiveUsers" :key="user.id" :user="user"></chat-user-details>
   </div>
 </template>
 
