@@ -35,6 +35,7 @@ export default {
               .then(response => {
                 this.$store.dispatch('set_session_key', response.data)
                 connectSocket()
+                  .then(() => this.$router.push(this.$route.query.redirect))
               })
           }
         })

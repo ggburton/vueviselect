@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="chatWindowContainer">
     <div>
       <chat-message v-for="message in $store.getters.getMessages" :key="message.text" :message="message"></chat-message>
     </div>
     <div>
-      <textarea cols="30" rows="10" v-model="draftMessage"></textarea>
+      <textarea class="testarea" cols="30" rows="10" v-model="draftMessage"></textarea>
       <button @click="send">Send</button>
     </div>
   </div>

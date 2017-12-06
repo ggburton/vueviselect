@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <h1>Chatbox</h1>
-    <chat-users></chat-users>
-    <chat-window></chat-window>
+  <div class="chatContainer">
+    <h1 class="chatHeading">Chatbox</h1>
+    <chat-users class="chatUsers"></chat-users>
+    <chat-window class="chatWindow"></chat-window>
   </div>
 </template>
 
@@ -36,5 +36,28 @@ export default {
 </script>
 
 <style lang="css">
+.chatContainer {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(5, auto);
+}
+
+.chatHeading {
+  grid-row: 1 / span 1;
+  grid-column: 1 /span 5;
+  text-align: center;
+}
+
+.chatUsers {
+  grid-column: 1 / span 2;
+  grid-row: 2 / span 1;
+}
+
+
+.chatWindow {
+  grid-column: 3 / span 3;
+  grid-row: 2 / span 1;
+  border: 1px solid black;
+}
 
 </style>
