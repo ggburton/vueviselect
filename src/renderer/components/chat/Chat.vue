@@ -38,24 +38,23 @@ export default {
 <style lang="css">
 .chatContainer {
   display: grid;
-  grid-template-columns: repeat(5, auto);
-  grid-template-rows: repeat(5, auto);
+  grid-template-columns: repeat(10, 10%);
+  grid-template-rows: repeat(10, 10%);
 }
 
 .chatHeading {
   grid-row: 1 / span 1;
-  grid-column: 1 /span 5;
+  grid-column: 1 /span 10;
   text-align: center;
 }
 
 .chatUsers {
   grid-column: 1 / span 2;
-  grid-row: 2 / span 1;
+  grid-row: 2 / span 10;
 }
 
-
 .chatWindow {
-  grid-column: 3 / span 3;
+  grid-column: 4 / span 6;
   grid-row: 2 / span 1;
   border: 1px solid black;
 }

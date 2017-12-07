@@ -1,10 +1,10 @@
 <template>
   <div v-if="user" class="chatUserDetailsContainer">
-    <div class="userDetails">
-      <h3>{{user.first_name}} {{user.last_name}}</h3>
-    </div>
     <div class="userPhoto">
       <chat-user-photo :photourl="user.photo"></chat-user-photo>
+    </div>
+     <div class="userDetails">
+      <h3>{{user.first_name}}</h3>
     </div>
   </div>
 </template>
@@ -21,19 +21,19 @@ export default {
 
 <style>
 .chatUserDetailsContainer {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  grid-template-rows: repeat(5, auto)
+  margin: 5px 5px;
+  display: flex;
+  border: 1px solid black;
+  border-radius: 2px 8px 8px 2px;
+  width: 80%;
 }
 
 .userPhoto {
-  grid-column: 1 / span 1;
-  grid-row: 1 / span 3;
+  border-radius: 8px;
 }
 
 .userDetails {
-  grid-column: 2 / span 4;
-  grid-row: 1 / span 3;
+  margin-left: 10px;
 }
 
 p {

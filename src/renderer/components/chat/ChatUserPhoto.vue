@@ -1,6 +1,8 @@
 <template>
   <div class="imageContainer">
-    <img :src="buildUrl()" height="60px" width="60px" />
+    <div class="outerBorder">
+      <img :src="buildUrl()" height="45px" width="45px" />
+    </div>
   </div>
 </template>
 
@@ -17,13 +19,27 @@ export default {
 
 <style>
   img {
-    border: 3px solid grey;
     border-radius: 50%;
+    align-self: center;
   }
 
   .imageContainer {
     display: flex;
-    background-color: #fefefe;
+    background-color: #efefef;
+    justify-content: center;
+    height: 70px;
+    width: 70px;
+    align-self: center;
+  }
+
+  .outerBorder {
+    border: 3px solid #0f2d6a;
+    border-radius: 50%;
+    height: 52px;
+    width: 52px;
+    align-self: center;
+    display: flex;
     justify-content: center;
   }
+
 </style>

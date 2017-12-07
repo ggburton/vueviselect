@@ -16,8 +16,8 @@ import { connectSocket } from '../../api/websocket'
 export default {
   data () {
     return {
-      username: null,
-      password: null
+      username: 'gburton',
+      password: 'testtesttest'
     }
   },
   methods: {

@@ -3,7 +3,7 @@
     <div class="imageBox">
       <chat-user-photo :photourl="this.user.photo"></chat-user-photo>
     </div>
-    <div class="messageText">{{message.text}}</div>
+    <div class="messageText"><p>{{message.text}}</p></div>
   </div>
 </template>
 
@@ -30,15 +30,27 @@ export default {
 
 .messageContainer {
   display: grid;
-  grid-template-rows: repeat(2, auto);
-  grid-template-columns: repeat(10, auto);
+  grid-template-rows: repeat(2, 50%);
+  grid-template-columns: repeat(8, 12.5%);
   border: 1px solid black;
+  border-radius: 2px 8px 8px 2px;
+  margin: 5px 5px 5px 5px;
 }
 
 .image-box {
   grid-row: 1 / span 2;
   grid-column: 1 / span 1;
   background-color: red;
+  height: 100%;
+}
+
+.messageText {
+  grid-row: 1 / span 2;
+  grid-column: 2 / span 7;
+}
+
+p {
+  margin-top: 10px;
 }
 
 </style>

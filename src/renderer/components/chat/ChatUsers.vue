@@ -1,6 +1,9 @@
 <template>
-  <div v-if="getActiveUsers">
-    <chat-user-details v-for="user in getActiveUsers" :key="user.id" :user="user"></chat-user-details>
+  <div v-if="getActiveUsers" class="chatUsersContainer">
+    <h2 class="chatUserTitle">Connected Users</h2>
+    <div class="userDetailsFlex">
+      <chat-user-details v-for="user in getActiveUsers" :key="user.id" :user="user"></chat-user-details>
+    </div>
   </div>
 </template>
 
@@ -21,5 +24,18 @@ export default {
 </script>
 
 <style>
+
+.chatUsersContainer {
+  border: 4px solid black;
+  border-radius: 8px;
+  height: 100vh;
+  text-align: center;
+}
+
+.userDetailsFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 
 </style>
