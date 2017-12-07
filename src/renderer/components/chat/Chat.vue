@@ -56,7 +56,8 @@ export default {
 .chatWindow {
   grid-column: 4 / span 6;
   grid-row: 2 / span 1;
-  border: 1px solid black;
+  border: 4px solid black;
+  border-radius: 8px;
 }
 
 </style>

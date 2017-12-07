@@ -1,10 +1,8 @@
 <template>
   <div class="chatWindowContainer">
-    <div>
-      <chat-message v-for="message in $store.getters.getMessages" :key="message.text" :message="message"></chat-message>
-    </div>
-    <div>
-      <textarea class="testarea" cols="30" rows="10" v-model="draftMessage"></textarea>
+    <chat-message v-for="message in $store.getters.getMessages" :key="message.text" :message="message"></chat-message>
+    <div class="textEntryDiv">
+      <textarea autofocus class="testarea" rows="5" v-model="draftMessage"></textarea>
       <button @click="send">Send</button>
     </div>
   </div>
@@ -40,5 +38,19 @@ export default {
 </script>
 
 <style>
+.chatWindowContainer {
+  height: 100vh;
+}
+
+textarea {
+  width: 99%;
+  outline: none;
+  resize: none;
+}
+
+.textEntryDiv {
+  margin-bottom: 5px;
+  align-self: bottom;
+}
 
 </style>
