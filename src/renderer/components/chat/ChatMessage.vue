@@ -28,6 +28,7 @@ export default {
 
 <style>
 
+
 .messageContainer {
   display: grid;
   grid-template-rows: repeat(2, 50%);
@@ -35,6 +36,7 @@ export default {
   border: 1px solid black;
   border-radius: 2px 8px 8px 2px;
   margin: 5px 5px 5px 5px;
+  align-self: auto;
 }
 
 .image-box {

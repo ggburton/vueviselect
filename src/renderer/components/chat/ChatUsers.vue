@@ -28,7 +28,7 @@ export default {
 .chatUsersContainer {
   border: 4px solid black;
   border-radius: 8px;
-  height: 100vh;
+  height: 80vh;
   text-align: center;
 }
 
