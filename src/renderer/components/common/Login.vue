@@ -1,12 +1,16 @@
 <template>
-  <div>
-    <div>
-      <input type="text" v-model="username" placeholder="username" />
+  <div class="adLoginContainer">
+    <h1 class="title">Active Directory Login</h1>
+    <h3 class="subtitle">needed for backchat and netmap</h3>
+    <div class="loginForm">
+      <div class="inputElement">
+       <input type="text" v-model="username" placeholder="username" />
+      </div>
+      <div class="inputElement">
+        <input type="password" v-model="password" placeholder="password" />
+      </div>
+      <button class="inputElement" @click="login">Login</button>
     </div>
-    <div>
-      <input type="password" v-model="password" placeholder="password" />
-    </div>
-    <button @click="login">Login</button>
   </div>
 </template>
 
@@ -45,5 +49,40 @@ export default {
 </script>
 
 <style>
+.adLoginContainer {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(20, 5vh);
+  text-align: center;
+  align-items: center;
+}
 
+.title {
+  grid-column: 1 / 8;
+  grid-row: 1 / span 1;
+}
+
+.subtitle {
+  grid-column: 1 / 8;
+  grid-row: 3 / span 1;
+}
+
+.loginForm {
+  grid-column: 3 / span 3;
+  grid-row: 4 / span 6;
+  background-color: #efefef;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 8px;
+
+}
+
+.inputElement {
+  margin-bottom: 10px;
+}
+
+input {
+  background-color: white;
+  height: 2em;
+}
 </style>
