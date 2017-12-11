@@ -25,7 +25,7 @@
 
 #app {
   height: 100vh;
-  width: 1000px;
+  width: 800px;
 }
 
 </style>

@@ -35,7 +35,7 @@ export default {
 .messageContainer {
   display: grid;
   grid-template-rows: repeat(2, 50%);
-  grid-template-columns: repeat(8, 12.5%);
+  grid-template-columns: repeat(10, 10fr);
   border: 1px solid black;
   border-radius: 2px 8px 8px 2px;
   margin: 5px 5px 5px 5px;
@@ -45,13 +45,12 @@ export default {
 .image-box {
   grid-row: 1 / span 2;
   grid-column: 1 / span 1;
-  background-color: red;
-  height: 100%;
+  width: 100%;
 }
 
 .messageText {
   grid-row: 1 / span 2;
-  grid-column: 2 / span 7;
+  grid-column: 2 / span 8;
   font-family: Barlow-MediumItalic;
 }
 

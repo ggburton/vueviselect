@@ -48,7 +48,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 @font-face {
   font-family: Barlow-MediumItalic;
   src: url('../../assets/Barlow-MediumItalic.ttf');
@@ -57,7 +57,7 @@ export default {
 .adLoginContainer {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(20, 5vh);
+  grid-template-rows: repeat(20, auto);
   text-align: center;
   align-items: center;
 }
@@ -73,9 +73,9 @@ export default {
 }
 
 .loginForm {
-  grid-column: 3 / span 3;
+  grid-column: 3 / span 4;
   grid-row: 4 / span 6;
-  background-color: #efefef;
+  background-color: $brand-primary;
   padding: 20px;
   border: 1px solid black;
   border-radius: 8px;

@@ -40,6 +40,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(10, 10%);
   grid-template-rows: repeat(10, 10%);
+  grid-column-gap: 8px;
 }
 
 .chatHeading {
@@ -49,7 +50,7 @@ export default {
 }
 
 .chatUsers {
-  grid-column: 1 / span 2;
+  grid-column: 1 / span 3;
   grid-row: 2 / span 10;
 }
 
