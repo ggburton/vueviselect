@@ -1,7 +1,6 @@
 <template>
   <div>
     <div id="network"></div>
-    <router-link to="/lockoutmacs">Block Mac Address</router-link>
   </div>
 </template>
 

@@ -1,34 +1,25 @@
 <template>
   <div v-if="wSwitch" class="data-grid">
-    <div class="panel">
-      <div class="panel-header">
-        <h1>{{ wSwitch.name }}</h1>
-      </div>
-    <div class="flex-h">
-      <table>
-        <tr>
-          <td>IP Address</td>
-          <td>{{ wSwitch.ipAddress }}</td>
-        </tr>
-        <tr>
-          <td>Parent Switch</td>
-          <td>{{ wSwitch.parent }}</td>
-        </tr>
-        <tr>
-          <td>Last Ping</td>
-          <td>{{ lastPingTime }}</td>
-        </tr>
-        <tr>
-          <td>Location</td>
-          <td>{{ wSwitch.location }}</td>
-        </tr>
-        <tr>
-          <td>Uptime</td>
-          <td>{{ switchUptime }}</td>
-        </tr>
-      </table>
+
+    <div class="heading">
+      <h1>{{ wSwitch.name }}</h1>
     </div>
-    </div>
+
+    <div class="label">IP Address</div>
+    <div class="data">{{ wSwitch.ipAddress }}</div>
+
+    <div class="label">Parent Switch</div>
+    <div class="data">{{ wSwitch.parent }}</div>
+
+    <div class="label">Last Ping</div>
+    <div class="data">{{ lastPingTime }}</div>
+
+    <div class="label">Location</div>
+    <div class="data">{{ wSwitch.location }}</div>
+
+    <div class="label">Uptime</div>
+    <div class="data">{{ switchUptime }}</div>
+
   </div>
 </template>
 
@@ -69,47 +60,40 @@ export default {
 </script>
 
 <style>
-
-.panel {
-  background-color: #333333;
-  border-radius: 5px;
-  margin: 5px 5px;
-}
-
-
 .data-grid {
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  color: white;
+  display: grid;
+  grid-template-rows: repeat(6, auto);
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-flow: column;
+  grid-row-gap: 5px;
+  border: 3px solid black;
+  border-radius: 8px;
+  margin-left: 8px;
 }
 
-.flex-h {
-  display: flex;
-  justify-content: center;
-  background-color: #1c1a1a;
-
-}
-
-table {
-   margin-top: 10px;
-   width: 90%;
-   border-collapse: collapse;
-   font-size: 20px;
-}
-
-tr {
-  padding: 30px;
-}
-
-td {
-  padding-left: 15px;
-  border-collapse: collapse;
-}
-
-h1 {
+.heading {
+  grid-column: 1 / -1;
+  grid-row: 1/ span 1;
+  width: 100%;
+  background-color: #d8d8d8;
   text-align: center;
+}
+
+.label {
+  grid-column: 1 / span 1;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.data {
+  grid-column: 2 / span 1;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.address {
+  grid-row: 2 /span 1;
 }
 
 </style>

@@ -1,12 +1,11 @@
 <template>
-  <div>
-    <h2>Update Ticket</h2>
+  <div class="ticketUpdateFormDiv">
+    <h4>Update Ticket</h4>
     <form>
       <div>
-        <textarea row="4" cols="20" v-model="body"></textarea>
+        <textarea id="ticketUpdate" row="10" cols="20" v-model="body"></textarea>
       </div>
     </form>
-    <button @click="cancel">Cancel</button>
     <button @click="submit">Submit</button>
   </div>
 </template>
@@ -21,9 +20,6 @@ export default {
     }
   },
   methods: {
-    cancel () {
-      this.$emit('toggleForm')
-    },
     submit () {
       console.log(this.$store.state.Spiceworks.csrf_token)
       const postData = {
@@ -51,5 +47,14 @@ export default {
 
 
 <style>
+ .ticketUpdateFormDiv {
+   text-align: center;
+ }
 
+ #ticketUpdate {
+   width: 100%;
+   height: 100px;
+   overflow: scroll;
+   resize: none;
+ }
 </style>

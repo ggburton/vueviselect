@@ -24,9 +24,9 @@ export default new Router({
     },
     {
       path: '/network',
-      name: 'landing-page',
+      name: 'network-page',
       beforeEnter: requireAuth,
-      component: require('@/components/LandingPage').default
+      component: require('@/components/network/NetworkPage').default
     },
     {
       path: '/chat',
@@ -50,8 +50,13 @@ export default new Router({
       component: require('@/components/spiceworks/TicketList').default
     },
     {
+      path: '/landing',
+      name: 'landing-page',
+      component: require('@/components/LandingPage').default
+    },
+    {
       path: '*',
-      redirect: '/chat'
+      redirect: '/landing'
     }
   ]
 })

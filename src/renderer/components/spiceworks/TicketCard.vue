@@ -1,7 +1,6 @@
 <template>
   <div class="card" @click="goDetail">
-    <div class="alertPanel" :class="alertLevel"></div>
-    <h3 class="card-heading">{{ticket.summary}}</h3>
+    <h3 class="card-heading">{{stripHtml(ticket.summary)}}</h3>
     <div class="card-body">
       <p>creator: {{ticket.creator.first_name}} {{ticket.creator.last_name}}</p>
       <p>created: {{timeSince(ticket.created_at)}} </p>
@@ -11,9 +10,11 @@
 </template>
 
 <script>
+  import { stripHtml } from '../../helpers/striphtml'
   export default {
     props: ['ticket'],
     methods: {
+      stripHtml,
       timeSince (time) {
         return this.$moment(time).fromNow()
       },
@@ -31,23 +32,24 @@
 
 <style>
   .card {
-    background-color: #efeee6;
     width: 200px;
-    margin-bottom: 15px;
+    margin-bottom: 15px 15px;
     height: 300px;
     overflow: hidden;
+    border: 4px solid black;
+    border-radius: 5px;
   }
 
   .card:hover {
-    background-color: #ccc9b5;
+    border: 4px solid #151515;
   }
 
   .card:hover .card-heading {
-    background-color: #b9b9b9;
+    background-color: #f0f0f0;
   }
 
   .card-heading {
-    background-color: #b7b6b2;
+    background-color: #d8d8d8;
     margin-top: 0;
     height: 25%;
     overflow: hidden;
@@ -55,16 +57,9 @@
   }
 
   .card-body {
-    margin: 10px 10px;
     overflow: hidden;
   }
 
-  .alertPanel {
-    height: 10px;
-  }
 
-  .green {
-    background-color: green;
-  }
 
 </style>

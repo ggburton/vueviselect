@@ -27,7 +27,10 @@ export default {
 </script>
 
 <style>
-
+@font-face {
+  font-family: Barlow-MediumItalic;
+  src: url('../../assets/Barlow-MediumItalic.ttf');
+}
 
 .messageContainer {
   display: grid;
@@ -49,10 +52,11 @@ export default {
 .messageText {
   grid-row: 1 / span 2;
   grid-column: 2 / span 7;
+  font-family: Barlow-MediumItalic;
 }
 
 p {
-  margin-top: 10px;
+  margin: 10px 5px 5px 5px;
 }
 
 </style>

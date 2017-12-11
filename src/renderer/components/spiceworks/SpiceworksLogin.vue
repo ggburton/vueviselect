@@ -1,16 +1,16 @@
 <template>
-  <div class="wrapper">
-    <div>
-      <h1>Login</h1>
-          <div>
-            <input type="text" placeholder="username" v-model="username">
-          </div>
-          <div>
-            <input type="password" placeholder="password" v-model="password">
-          </div>
-          <div>
-            <button @click="login">Login</button>
-          </div>
+  <div class="spiceworksLoginWrapper">
+    <h1 class="title">Spiceworks Login</h1>
+    <h3 class="subtitle">Please provide you spiceworks email and password to continue</h3>
+    <div class="formContainer">
+      <div class="inputElement">
+        <input type="text" placeholder="username" v-model="username">
+      </div>
+      <div class="inputElement">
+        <input type="password" placeholder="password" v-model="password">
+      </div>
+      <div>
+        <button @click="login">Login</button>
       </div>
     </div>
   </div>
@@ -49,8 +49,45 @@
 </script>
 
 <style>
-.wrapper {
-  display: flex;
-  justify-content: center;
+
+@font-face {
+  font-family: Barlow-MediumItalic;
+  src: url('../../assets/Barlow-MediumItalic.ttf');
 }
+
+.spiceworksLoginWrapper {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(20, 5vh);
+  text-align: center;
+  align-items: center;
+}
+
+.title {
+  grid-column: 1 / span 8;
+  grid-row: 1 / span 1;
+}
+
+.subtitle {
+  grid-column: 1 /span 8;
+  grid-row: 3/ span 1;
+}
+
+.formContainer {
+  grid-column: 3 / span 4;
+  grid-row: 4 / span 6;
+  background-color: #efefef;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.inputElement {
+  margin-bottom: 10px;
+}
+
+input {
+  font-family: Barlow-MediumItalic;
+}
+
 </style>

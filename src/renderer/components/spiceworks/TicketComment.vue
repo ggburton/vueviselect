@@ -25,8 +25,15 @@ export default {
 
 .comment {
   display: grid;
-  grid-template: repeat(8, 12.5%) / repeat(2, 25%);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
+  grid-row-gap: 8px;
   align-items: left;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 8px 8px;
+  margin-top: 20px;
+  background-color: #ffffff;
 }
 
 .comment-label {
@@ -34,7 +41,7 @@ export default {
 }
 
 .comment-data {
-  grid-column: 2/ span 1;
+  grid-column: 3 / span 1;
 }
 
 .comment-updated-by-label {
@@ -54,8 +61,8 @@ export default {
 }
 
 .comment-text {
-  grid-row: 3 /span 2;
-  grid-column: 3 / span 2;
+  grid-row: 3 /span 1;
+  grid-column: 1 / span 3;
 }
 
 </style>

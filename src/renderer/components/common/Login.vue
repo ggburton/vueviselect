@@ -49,6 +49,11 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: Barlow-MediumItalic;
+  src: url('../../assets/Barlow-MediumItalic.ttf');
+}
+
 .adLoginContainer {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -71,7 +76,7 @@ export default {
   grid-column: 3 / span 3;
   grid-row: 4 / span 6;
   background-color: #efefef;
-  padding: 10px;
+  padding: 20px;
   border: 1px solid black;
   border-radius: 8px;
 
@@ -84,5 +89,7 @@ export default {
 input {
   background-color: white;
   height: 2em;
+  font-size: 1em;
+  font-family: Barlow-MediumItalic;
 }
 </style>

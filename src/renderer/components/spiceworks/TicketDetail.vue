@@ -1,39 +1,44 @@
 <template>
   <div v-if="ticket" class="detail-container">
-    <div class="header">
-      <router-link to="/ticket" class="link">Back to ticket list</router-link>
-      <button @click="workon">Workon!</button>
-      <h3>{{ticket.summary}}</h3>
+
+    <router-link class="backButton" to="/tickets" tag="button">Back</router-link>
+    <button class="workonButton" @click="workon">Workon!</button>
+
+    <div class="summary dataDiv">
+      <h4>Summary</h4>
+      {{ticket.summary}}
     </div>
 
-    <div class="created-label label" >Created</div>
-    <div class="created data">{{ticket.created_at}}</div>
+    <div class="metaData dataDiv">
+      <div class="created-label label" >Created</div>
+      <div class="created data">{{formatTime(ticket.created_at)}}</div>
 
-    <div class="created-by-label label">Created By</div>
-    <div class="created-by data">{{ticket.created_by}}</div>
+      <div class="created-by-label label">Created By</div>
+      <div class="created-by data">{{ticket.created_by}}</div>
 
-    <div class="status-label label">Status</div>
-    <div class="status data">{{ticket.status}}</div>
+      <div class="status-label label">Status</div>
+      <div class="status data">{{ticket.status}}</div>
 
-    <div class="time-spent-label label">Time Spent</div>
-    <div class="time-spent data">{{ticket.time_spent_duration}}</div>
+      <div class="time-spent-label label">Time Spent</div>
+      <div class="time-spent data">{{ticket.time_spent_duration}}</div>
 
-    <div class="updated-at-label label">Last Updated</div>
-    <div class="updated-at data">{{ticket.updated_at}}</div>
+      <div class="updated-at-label label">Last Updated</div>
+      <div class="updated-at data">{{timeSince(ticket.updated_at)}}</div>
 
-    <div class="due-at-label label">Due At</div>
-    <div class="due-at data">{{ticket.due_at}}</div>
+      <div class="due-at-label label">Due At</div>
+      <div class="due-at data">{{ticket.due_at}}</div>
+    </div>
 
-    <div class="description-label label">Description</div>
-    <div class="description">{{stripHtml(ticket.description)}}</div>
-    <div>
-      <div class="comments">
-        <h3>Comments</h3>
-          <ticket-comment v-for="comment in ticket.comments" :key="comment.updated_at" :comment="comment"></ticket-comment>
-        </div>
-        <button @click="toggleForm" v-show="!addComment">Update Ticket</button>
-        <ticket-update-form v-show="addComment" v-on:toggleForm="toggleForm" v-on:closeForm="closeForm" :ticket="ticket"></ticket-update-form>
-      </div>
+    <div class="description dataDiv">
+      <h4 class="description-label label">Details</h4>
+      <div class="description">{{stripHtml(ticket.description)}}</div>
+    </div>
+    <div class="updateTicket dataDiv">
+      <ticket-update-form :ticket="ticket"></ticket-update-form>
+    </div>
+    <div class="comments dataDiv">
+      <h4>Comments</h4>
+      <ticket-comment v-for="comment in ticket.comments" :key="comment.updated_at" :comment="comment"></ticket-comment>
     </div>
   </div>
 </template>
@@ -44,8 +49,7 @@ import TicketUpdateForm from './TicketUpdateForm'
 export default {
   data () {
     return {
-      ticket: null,
-      addComment: false
+      ticket: null
     }
   },
   components: {
@@ -55,9 +59,6 @@ export default {
   methods: {
     stripHtml (string) {
       return string.replace(/<[^>]+>/g, '')
-    },
-    toggleForm () {
-      this.addComment = !this.addComment
     },
     updateTicket () {
       const server = this.$store.getters.getServer
@@ -69,16 +70,18 @@ export default {
         })
         .catch(err => console.log(err))
     },
-    closeForm () {
-      this.toggleForm()
-      this.updateTicket()
-    },
     workon () {
       const payload = {
         ticket: this.ticket.id,
         startTime: this.$moment.now()
       }
       this.$store.dispatch('work_on_ticket', payload)
+    },
+    formatTime (time) {
+      return this.$moment(time).format('hh:mmA DD/MM/YY')
+    },
+    timeSince (time) {
+      return this.$moment(time).fromNow()
     }
   },
   mounted () {
@@ -91,82 +94,77 @@ export default {
 <style>
  .detail-container {
    display: grid;
-   grid-template: repeat(12, auto) / repeat(5, auto);
+   grid-auto-flow: column;
+   grid-row-gap: 15px;
+   grid-template-columns: repeat(12, 1fr);
+   grid-template-rows: repeat(20, auto);
    align-items: center;
    width: 80%;
    margin: 0 auto;
+   background-color: #d8d8d8;
+   padding-top: 10px;
  }
 
- .header {
-   grid-row: 1;
-   grid-column: 1 / span 12;
-   text-align: center;
-   background-color: #eee;
- }
+  .backButton {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+  }
 
- .label {
-   grid-column: 1 / span 4;
- }
+  .workonButton {
+    grid-column: 11 / span 1;
+    grid-row: 1 /span 1;
+  }
 
- .data {
-   grid-column: 5 / span 8;
- }
+  .summary {
+    grid-column: 2 / span 10;
+    grid-row: 2 / span 1;
+    padding-bottom: 10px;
+  }
 
- .created-label {
-   grid-row: 2;
- }
+  .dataDiv {
+    background-color: #eeeded;
+    border: 1px solid #979797;
+    border-radius: 5px;
+    padding: 10px 10px;
+  }
 
-.created {
-  grid-row: 2;
-}
+  h4 {
+    text-align: center;
+  }
 
-.created-by-label {
-  grid-row: 3;
-}
+  .metaData {
+    grid-column: 2 / span 10;
+    grid-row: 3 / span 1;
+    grid-row-gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, auto);
+    grid-auto-flow: column;
+  }
 
-.created-by {
-  grid-row: 3;
-}
+  .label {
+    grid-column: 1 / span 1;
+  }
 
-.status-label {
-  grid-row: 4;
-}
+  .data {
+    grid-column: 3 / span 1;
+  }
 
-.status {
-  grid-row: 4;
-}
+  .description {
+    grid-column: 2 / span 10;
+    grid-row: 4 / span 1;
+  }
 
-.time-spent-label {
-  grid-row: 5;
-}
+  .updateTicket {
+    grid-column: 2 / span 10;
+    grid-row: 6 / span 1;
+  }
 
-.time-spent {
-  grid-row: 5;
-}
-
-.updated-at-label {
-  grid-row: 6;
-}
-
-.updated-at {
-  grid-row: 6;
-}
-
-.due-at-label {
-  grid-row: 7;
-}
-
-.due-at {
-  grid-row: 7;
-}
-
-.description-label {
-  grid-row: 8;
-}
-
-.description {
-  grid-row: 8;
-  grid-column: 1 / span 12;
-}
+  .comments {
+    grid-column: 2 / span 10;
+    grid-row: 5 / span 1;
+    height: 200px;
+    overflow: scroll;
+  }
 
 </style>

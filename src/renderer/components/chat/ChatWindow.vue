@@ -69,7 +69,8 @@ textarea {
 .textEntryDiv {
   grid-row: 10 / span 1;
   grid-column: 1 / span 8;
-  margin-bottom: 5px;
+  margin: 8px;
   display: flex;
+
 }
 </style>
