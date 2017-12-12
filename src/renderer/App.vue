@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <work-timer v-if="$store.state.Spiceworks.worktimer"></work-timer>
-    <router-view></router-view>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -28,4 +30,10 @@
   width: 90vw;
 }
 
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0
+}
 </style>

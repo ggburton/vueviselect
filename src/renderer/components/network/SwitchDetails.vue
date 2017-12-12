@@ -1,6 +1,5 @@
 <template>
   <div v-if="wSwitch" class="data-grid">
-
     <div class="heading">
       <h1>{{ wSwitch.name }}</h1>
     </div>
@@ -29,7 +28,6 @@
       <div class="label">Uptime</div>
       <div class="data">{{ switchUptime }}</div>
     </div>
-
   </div>
 </template>
 
@@ -116,6 +114,5 @@ export default {
   width: 50%;
   font-family: Barow-Medium;
 }
-
 
 </style>

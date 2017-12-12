@@ -65,7 +65,6 @@
     font-family: $heading-font;
   }
 
-
   .card-body {
     overflow: hidden;
     display: grid;

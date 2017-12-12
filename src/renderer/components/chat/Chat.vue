@@ -1,6 +1,6 @@
 <template>
   <div class="chatContainer">
-    <h1 class="chatHeading">BackChat</h1>
+    <h1 class="chatHeading">📢 BackChat</h1>
     <chat-users class="chatUsers"></chat-users>
     <chat-window class="chatWindow"></chat-window>
   </div>

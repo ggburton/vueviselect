@@ -1,10 +1,12 @@
 <template>
   <div class="mainContainer">
-    <h1>NetMummy</h1>
+    <h1>&#128423; NetMummy</h1>
     <p>Watching your network</p>
     <div class="networkContainer">
       <network-vis class="networkMap" v-on:setCurrent="setCurrent($event)"></network-vis>
-      <switch-details class="switchDetails" :current-id="activeSwitchId"></switch-details>
+      <transition name="fade" mode="out-in">
+        <switch-details class="switchDetails" :current-id="activeSwitchId"></switch-details>
+      </transition>
     </div>
   </div>
 </template>
@@ -58,6 +60,25 @@ h1 {
 p {
   text-align: center;
   font-family: $lead-font;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0
+}
+
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
 }
 
 </style>
