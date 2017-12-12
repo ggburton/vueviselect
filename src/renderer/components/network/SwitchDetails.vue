@@ -20,7 +20,7 @@
       <div class="data">{{ lastPingTime }}</div>
     </div>
 
-    <div class="data-row">
+    <div class="data-row location">
       <div class="label">Location</div>
       <div class="data">{{ wSwitch.location }}</div>
     </div>
@@ -69,33 +69,52 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@font-face {
+  font-family: Barlow-Medium;
+  src: url('../../assets/Barlow-Medium.ttf');
+}
+
+@font-face {
+  font-family: Barlow-Black;
+  src: url('../../assets/Barlow-Black.ttf');
+}
+
 .data-grid {
   display: flex;
   flex-direction: column;
   border: 3px solid black;
   border-radius: 8px;
   margin-left: 8px;
+  flex-grow: 1;
+}
+
+.location {
+  flex-basis: 1;
 }
 
 .heading {
   width: 100%;
   background-color: #d8d8d8;
   text-align: center;
+  margin-bottom: 10px;
 }
 
 .data-row {
   display: flex;
   justify-content: space-between;
+  padding: 5px;
 }
 
 .label {
   width: 50%;
   margin-left: 8px;
+  font-family: Barlow-Black;
 }
 
 .data {
   width: 50%;
+  font-family: Barow-Medium;
 }
 
 

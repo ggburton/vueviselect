@@ -1,7 +1,11 @@
 <template>
-  <div class="networkContainer">
-    <network-vis class="networkMap" v-on:setCurrent="setCurrent($event)"></network-vis>
-    <switch-details class="switchDetails" :current-id="activeSwitchId"></switch-details>
+  <div class="mainContainer">
+    <h1>NetMummy</h1>
+    <p>Watching your network</p>
+    <div class="networkContainer">
+      <network-vis class="networkMap" v-on:setCurrent="setCurrent($event)"></network-vis>
+      <switch-details class="switchDetails" :current-id="activeSwitchId"></switch-details>
+    </div>
   </div>
 </template>
 
@@ -31,7 +35,8 @@
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
 .networkContainer {
   display: flex;
 }
@@ -43,6 +48,16 @@
 .switchDetails {
   flex-grow: 1;
   width: 100%;
+}
+
+h1 {
+  text-align: center;
+  font-family: $heading-font;
+}
+
+p {
+  text-align: center;
+  font-family: $lead-font;
 }
 
 </style>

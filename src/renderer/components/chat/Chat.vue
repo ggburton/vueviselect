@@ -1,6 +1,6 @@
 <template>
   <div class="chatContainer">
-    <h1 class="chatHeading">Chatbox</h1>
+    <h1 class="chatHeading">BackChat</h1>
     <chat-users class="chatUsers"></chat-users>
     <chat-window class="chatWindow"></chat-window>
   </div>
@@ -35,7 +35,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="scss" scoped>
 .chatContainer {
   display: grid;
   grid-template-columns: repeat(10, 10%);
@@ -47,6 +47,7 @@ export default {
   grid-row: 1 / span 1;
   grid-column: 1 /span 10;
   text-align: center;
+  font-family: $heading-font;
 }
 
 .chatUsers {
@@ -57,7 +58,7 @@ export default {
 .chatWindow {
   grid-column: 4 / span 6;
   grid-row: 2 / span 1;
-  border: 4px solid black;
+  border: $thick-border;
   border-radius: 8px;
 }
 

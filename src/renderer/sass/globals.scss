@@ -1,1 +1,37 @@
-$brand-primary: #efefef;
+@font-face {
+  font-family: 'play-bold';
+  src: url('../../assets/Play-Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'play-regular';
+  src: url('../../assets/Play-Regular.ttf');
+  font-weight: normal;
+}
+
+$primary-color: #efefef;
+
+$light-color: #f0f0f0;
+$dark-color: #d8d8d8;
+
+$highlight-color: #0F2D6A;
+$secondary-highlight-color: #0c7054;
+
+$thick-border: 4px solid $highlight-color;
+$thin-border: 1px solid $highlight-color;
+
+$heading-font: 'play-bold', Arial, sans-serif;
+$lead-font: 'play-regular', Arial, sans-serif;
+
+@mixin btn-theme {
+  background-color: $secondary-highlight-color;
+  color: white;
+  border: $thin-border;
+  border-radius: 3px;
+  padding: 3px 3px;
+  &:hover {
+    background-color: $highlight-color;
+    color: #fff;
+  }
+}

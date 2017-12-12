@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
   img {
     border-radius: 50%;
     align-self: center;
@@ -25,7 +25,7 @@ export default {
 
   .imageContainer {
     display: flex;
-    background-color: #efefef;
+    background-color: $primary-color;
     justify-content: center;
     height: 70px;
     width: 70px;
@@ -33,7 +33,7 @@ export default {
   }
 
   .outerBorder {
-    border: 3px solid #0f2d6a;
+    border: 3px solid $highlight-color;
     border-radius: 50%;
     height: 52px;
     width: 52px;

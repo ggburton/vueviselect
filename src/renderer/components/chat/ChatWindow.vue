@@ -42,16 +42,13 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
 .chatWindowContainer {
   display: grid;
   grid-template-rows: repeat(10, 10%);
   grid-template-columns: repeat(8, 12.5%);
   height: 80vh;
-}
-
-.center {
-  border: 2px solid red;
 }
 
 .messages {
@@ -64,6 +61,7 @@ textarea {
   min-width: 90%;
   outline: none;
   resize: none;
+  font-family: PlayRegular, Arial, Helvetica, sans-serif;
 }
 
 .textEntryDiv {
@@ -71,6 +69,9 @@ textarea {
   grid-column: 1 / span 8;
   margin: 8px;
   display: flex;
+}
 
+button {
+  @include btn-theme;
 }
 </style>

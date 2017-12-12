@@ -43,10 +43,18 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
   .workon {
-    position: absolute;
-    top: 0;
+    bottom: 0;
     right: 0;
+    width: 100px;
+    height: 200px;
+    position: fixed;
+    border: $thin-border;
+    border-radius: 8px;
+    text-align: center;
+    background-color: $primary-color;
+    opacity: 0.5;
   }
+
 </style>

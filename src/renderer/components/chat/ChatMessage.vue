@@ -26,17 +26,13 @@ export default {
 }
 </script>
 
-<style>
-@font-face {
-  font-family: Barlow-MediumItalic;
-  src: url('../../assets/Barlow-MediumItalic.ttf');
-}
+<style lang="scss" scoped>
 
 .messageContainer {
   display: grid;
   grid-template-rows: repeat(2, 50%);
   grid-template-columns: repeat(10, 10fr);
-  border: 1px solid black;
+  border: $thin-border;
   border-radius: 2px 8px 8px 2px;
   margin: 5px 5px 5px 5px;
   align-self: auto;
@@ -51,7 +47,7 @@ export default {
 .messageText {
   grid-row: 1 / span 2;
   grid-column: 2 / span 8;
-  font-family: Barlow-MediumItalic;
+  font-family: $lead-font;
 }
 
 p {

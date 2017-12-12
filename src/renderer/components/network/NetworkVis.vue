@@ -96,7 +96,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
   #network {
     height: 450px;
     width: 500px;

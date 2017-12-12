@@ -10,7 +10,6 @@
   </div>
 </template>
 
-
 <script>
 export default {
   props: ['ticket'],
@@ -46,7 +45,7 @@ export default {
 </script>
 
 
-<style>
+<style lang="scss">
  .ticketUpdateFormDiv {
    text-align: center;
  }
@@ -57,4 +56,14 @@ export default {
    overflow: scroll;
    resize: none;
  }
+
+ button {
+   @include btn-theme;
+ }
+
+ textarea {
+   outline: $highlight-color solid 1px;
+   margin-bottom: 10px;
+ }
+
 </style>

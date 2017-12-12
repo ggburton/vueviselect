@@ -19,11 +19,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .chatUserDetailsContainer {
   margin: 5px 5px;
   display: flex;
-  border: 1px solid black;
+  border: $thin-border;
   border-radius: 2px 8px 8px 2px;
   width: 80%;
 }
@@ -38,5 +38,9 @@ export default {
 
 p {
   margin: 0px;
+}
+
+h3 {
+  font-family: $heading-font;
 }
 </style>

@@ -10,6 +10,7 @@
     </div>
 
     <div class="metaData dataDiv">
+      <h4 class="heading">Status</h4>
       <div class="created-label label" >Created</div>
       <div class="created data">{{formatTime(ticket.created_at)}}</div>
 
@@ -30,7 +31,7 @@
     </div>
 
     <div class="description dataDiv">
-      <h4 class="description-label label">Details</h4>
+      <h4>Details</h4>
       <div class="description">{{stripHtml(ticket.description)}}</div>
     </div>
     <div class="updateTicket dataDiv">
@@ -91,7 +92,7 @@ export default {
 </script>
 
 
-<style>
+<style lang="scss">
  .detail-container {
    display: grid;
    grid-auto-flow: column;
@@ -101,13 +102,15 @@ export default {
    align-items: center;
    width: 80%;
    margin: 0 auto;
-   background-color: #d8d8d8;
+   // background-color: #d8d8d8;
+   border: 3px solid $highlight-color;
+   border-radius: 8px;
    padding-top: 10px;
  }
 
   .backButton {
-    grid-column: 2 / span 1;
-    grid-row: 1 / span 1;
+    position: fixed;
+    top: 100px;
   }
 
   .workonButton {
@@ -130,6 +133,7 @@ export default {
 
   h4 {
     text-align: center;
+    margin-top: 0px;
   }
 
   .metaData {
@@ -140,6 +144,10 @@ export default {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(6, auto);
     grid-auto-flow: column;
+  }
+
+  .heading {
+    grid-column: 1 / span 10;
   }
 
   .label {
@@ -165,6 +173,10 @@ export default {
     grid-row: 5 / span 1;
     height: 200px;
     overflow: scroll;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
   }
 
 </style>

@@ -23,10 +23,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+h2 {
+  font-family: $heading-font;
+}
 
 .chatUsersContainer {
-  border: 4px solid black;
+  border: $thick-border;
   border-radius: 8px;
   height: 80vh;
   text-align: center;

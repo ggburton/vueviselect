@@ -48,11 +48,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
-@font-face {
-  font-family: Barlow-MediumItalic;
-  src: url('../../assets/Barlow-MediumItalic.ttf');
-}
+<style lang="scss" scoped>
 
 .adLoginContainer {
   display: grid;
@@ -60,26 +56,30 @@ export default {
   grid-template-rows: repeat(20, auto);
   text-align: center;
   align-items: center;
+  border: $thick-border;
+  border-radius: 8px;
+  padding-bottom: 50px;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .title {
-  grid-column: 1 / 8;
+  grid-column: 3 / span 4;
   grid-row: 1 / span 1;
 }
 
 .subtitle {
-  grid-column: 1 / 8;
+  grid-column: 3 / span 4;
   grid-row: 3 / span 1;
 }
 
 .loginForm {
   grid-column: 3 / span 4;
   grid-row: 4 / span 6;
-  background-color: $brand-primary;
+  background-color: $primary-color;
   padding: 20px;
   border: 1px solid black;
   border-radius: 8px;
-
 }
 
 .inputElement {
@@ -90,6 +90,9 @@ input {
   background-color: white;
   height: 2em;
   font-size: 1em;
-  font-family: Barlow-MediumItalic;
+}
+
+button {
+  @include btn-theme;
 }
 </style>

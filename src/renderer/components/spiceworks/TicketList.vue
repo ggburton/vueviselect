@@ -1,7 +1,7 @@
 <template>
   <div class="ticketListContainer">
     <div class="titleDiv">
-      <h1 class="title">Ticket List</h1>
+      <h1 class="title">✔    Ticket Off</h1>
     </div>
     <div class="menuButtons">
       <button @click="getMyTickets">My Tickets</button>
@@ -73,7 +73,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 .ticketListContainer {
   display: flex;
@@ -95,8 +95,12 @@ export default {
 
 .titleDiv {
   width: 500px;
+  font-family: $heading-font;
   align-self: center;
 }
 
+button {
+  @include btn-theme;
+}
 
 </style>
