@@ -34,7 +34,7 @@
 <script>
 import { useClient } from '../../api/core'
 export default {
-  props: ['currentId'],
+  props: ['current'],
   data () {
     return {
       wSwitch: null,
@@ -49,21 +49,18 @@ export default {
       return this.$moment.duration(this.wSwitch.uptime + this.uptime).format('Y [years] M [months] D [days] HH:mm:ss')
     }
   },
-  watch: {
-    currentId: function (newVal, oldVal) {
+  mounted () {
+    if (this.current !== null) {
       const action = ['switch', 'read']
-      const params = {id: this.currentId}
+      const params = {id: this.current}
       useClient(action, params)
         .then(data => { this.wSwitch = data })
         .catch(err => console.log('Opps: ', err))
     }
-  },
-  mounted () {
     setInterval(() => {
       this.uptime += 1000
     }, 1000)
   }
-
 }
 </script>
 
