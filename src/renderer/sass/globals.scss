@@ -11,12 +11,12 @@
 }
 
 $primary-color: #efefef;
-
 $light-color: #f0f0f0;
 $dark-color: #d8d8d8;
 
 $highlight-color: #0F2D6A;
 $secondary-highlight-color: #0c7054;
+$third-highlight-color: #FECC46;
 
 $thick-border: 4px solid $highlight-color;
 $thin-border: 1px solid $highlight-color;
@@ -29,7 +29,9 @@ $lead-font: 'play-regular', Arial, sans-serif;
   color: white;
   border: $thin-border;
   border-radius: 3px;
-  padding: 3px 3px;
+  padding: 10px 10px;
+  font-size: 16px;
+  font-weight: bold;
   &:hover {
     background-color: $highlight-color;
     color: #fff;

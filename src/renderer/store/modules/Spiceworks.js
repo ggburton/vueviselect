@@ -11,11 +11,14 @@ const state = {
 }
 
 const getters = {
-  worktimer (state) {
+  getWorktimer (state) {
     return state.ticketTimer.worktimer
   },
-  session_details (state) {
+  getSession_details (state) {
     return state.session_details
+  },
+  getCurrentTicket (state) {
+    return state.ticketTimer.ticket
   }
 }
 

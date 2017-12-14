@@ -4,12 +4,21 @@
     <h3 class="subtitle">needed for backchat and netmap</h3>
     <div class="loginForm">
       <div class="inputElement">
-       <input type="text" v-model="username" placeholder="username" />
+       <span v-if="badLogin" class="errormsg">*wrong login details</span>
+       <input :class="{ 'error': badLogin}" v-on:input="removeError" type="text" v-model="username" placeholder="username" />
       </div>
       <div class="inputElement">
-        <input type="password" v-model="password" placeholder="password" />
+        <span v-if="badLogin" class="errormsg">*wrong login details</span>
+        <input :class="{ 'error': badLogin}" v-on:input="removeError" type="password" v-model="password" placeholder="password" />
       </div>
-      <button class="inputElement" @click="login">Login</button>
+      <button v-if="!loading" class="inputElement" @click="login">Login</button>
+      <spinner v-if="loading"></spinner>
+      <div v-if="badLogin">
+        <p class="errormsg">You appear to be having problems logging in.<br>
+        <br>
+        Maybe I.T. is not your thing.<br> How about a career using simpler tools<br><br>
+        Something with a shovel perhaps?</p>
+      </div>
     </div>
   </div>
 </template>
@@ -17,15 +26,27 @@
 <script>
 import { corelogin } from '../../api/core'
 import { connectSocket } from '../../api/websocket'
+import { Spinner } from './Spinner.vue'
 export default {
   data () {
     return {
-      username: 'gburton',
-      password: 'testtesttest'
+      username: null,
+      password: null,
+      badLogin: false,
+      loading: false
     }
   },
+  components: {
+    Spinner
+  },
   methods: {
+    removeError () {
+      if (this.badLogin === true) {
+        this.badLogin = false
+      }
+    },
     login () {
+      this.loading = true
       const payload = {
         'username': this.username,
         'password': this.password
@@ -42,6 +63,11 @@ export default {
                   .then(() => this.$router.push(this.$route.query.redirect))
               })
           }
+        })
+        .catch(err => {
+          console.log(err)
+          this.badLogin = true
+          this.loading = false
         })
     }
   }
@@ -80,6 +106,15 @@ export default {
   padding: 20px;
   border: 1px solid black;
   border-radius: 8px;
+}
+
+.error {
+  border: 2px solid red;
+}
+
+.errormsg {
+  color: red;
+  font-size: 12px;
 }
 
 .inputElement {

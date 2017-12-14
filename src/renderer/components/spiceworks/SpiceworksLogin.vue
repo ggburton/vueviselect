@@ -1,32 +1,52 @@
 <template>
   <div class="spiceworksLoginWrapper">
     <h1 class="title">Spiceworks Login</h1>
-    <h3 class="subtitle">Please provide you spiceworks email and password to continue</h3>
+    <h3 class="subtitle">I need your spiceworks email and password to get your tickets</h3>
     <div class="formContainer">
       <div class="inputElement">
-        <input type="text" placeholder="username" v-model="username">
+        <span v-if="badLogin" class="errormsg">*wrong login details</span>
+        <input type="text" :class="{'error': badLogin}" v-on:input="removeError" placeholder="username" v-model="username">
       </div>
       <div class="inputElement">
-        <input type="password" placeholder="password" v-model="password">
+        <span v-if="badLogin" class="errormsg">*wrong login details</span>
+        <input type="password" :class="{'error': badLogin}" v-on:input="removeError" placeholder="password" v-model="password">
       </div>
       <div>
-        <button @click="login">Login</button>
+        <button v-if="!loading" @click="login">Login</button>
+        <spinner v-if="loading"></spinner>
+      </div>
+      <div v-if="badLogin">
+        <p class="errormsg">You appear to be having problems logging in.<br>
+        <br>
+        Should I raise a ticket to get someone to show you<br>
+        how to enter a username, password and click a button?</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import Spinner from '../common/Spinner.vue'
   export default {
-    name: 'landing-page',
     data () {
       return {
         username: null,
-        password: null
+        password: null,
+        badLogin: false,
+        loading: false
       }
     },
+    components: {
+      Spinner
+    },
     methods: {
+      removeError () {
+        if (this.badLogin === true) {
+          this.badLogin = false
+        }
+      },
       login () {
+        this.loading = true
         const server = this.$store.getters.getServer
         this.$http.post(`http://${server}/spiceworks/`, {
           username: this.username,
@@ -35,14 +55,13 @@
           .then(response => {
             console.log(response)
             this.$store.dispatch('set_session_details', response.data)
-            this.$router.push('/tickets')
+            this.$router.push(this.$route.query.redirect)
           })
-          .catch(err => console.log(err))
-      }
-    },
-    mounted () {
-      if (this.$store.getters.session_details.csrf_token !== null) {
-        this.$router.push('/tickets')
+          .catch(err => {
+            console.log(err)
+            this.badLogin = true
+            this.loading = false
+          })
       }
     }
   }
@@ -95,6 +114,17 @@ input {
   height: 2em;
   font-size: 1em;
 }
+
+
+.error {
+  border: 2px solid red;
+}
+
+.errormsg {
+  color: red;
+  font-size: 12px;
+}
+
 
 button {
   @include btn-theme;

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import { requireAuth } from './routeguards'
+import { requireADAuth, requireSpiceAuth } from './routeguards'
 
 Vue.use(Router)
 
@@ -14,45 +14,48 @@ export default new Router({
     {
       path: '/lockoutmacs',
       name: 'lockout-macs',
-      beforeEnter: requireAuth,
+      beforeEnter: requireADAuth,
       component: require('@/components/network/LockoutMacs').default
     },
     {
       path: '/lockoutform',
       name: 'lockout-form',
+      beforeEnter: requireADAuth,
       component: require('@/components/network/LockoutMacForm').default
     },
     {
       path: '/network',
       name: 'network-page',
-      beforeEnter: requireAuth,
+      beforeEnter: requireADAuth,
       component: require('@/components/network/NetworkPage').default
     },
     {
       path: '/chat',
       name: 'chat',
-      beforeEnter: requireAuth,
+      beforeEnter: requireADAuth,
       component: require('@/components/chat/Chat').default
     },
     {
-      path: '/spiceworks',
-      name: 'spiceworks',
+      path: '/spiceworksLogin',
+      name: 'spiceworksLogin',
       component: require('@/components/spiceworks/SpiceworksLogin').default
     },
     {
       path: '/ticket/:id',
       name: 'ticket-detail',
+      beforeEnter: requireSpiceAuth,
       component: require('@/components/spiceworks/TicketDetail').default
     },
     {
       path: '/tickets',
       name: 'ticket',
+      beforeEnter: requireSpiceAuth,
       component: require('@/components/spiceworks/TicketList').default
     },
     {
       path: '/landing',
       name: 'landing-page',
-      component: require('@/components/LandingPage').default
+      component: require('@/components/common/LandingPage').default
     },
     {
       path: '*',

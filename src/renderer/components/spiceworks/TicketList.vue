@@ -1,16 +1,17 @@
 <template>
   <div class="ticketListContainer">
     <div class="titleDiv">
-      <h1 class="title">✔    Ticket Off</h1>
+      <h1 class="title">&#127915; Ticket Off</h1>
     </div>
     <div class="menuButtons">
       <button @click="getMyTickets">My Tickets</button>
       <button @click="getUnassignedTickets">Unassinged</button>
       <button @click="getOpenTickets">Open</button>
     </div>
-    <div class="cardListContainer">
+    <div v-if="!loading" class="cardListContainer">
       <ticket-card class="ticket" v-for="ticket in tickets" :key="ticket.id" :ticket="ticket"></ticket-card>
     </div>
+    <spinner v-if="loading"></spinner>
   </div>
 </template>
 
@@ -18,54 +19,65 @@
 import TicketCard from './TicketCard'
 import TicketDetail from './TicketDetail'
 import WorkTimer from './WorkTimer'
+import Spinner from '../common/Spinner'
 
 export default {
   data () {
     return {
       tickets: null,
-      server: null
+      server: null,
+      loading: false
     }
   },
   components: {
     TicketCard,
     TicketDetail,
-    WorkTimer
+    WorkTimer,
+    Spinner
   },
   methods: {
     getMyTickets () {
+      this.loading = true
       this.$http.get(`http://${this.server}/proxy/tickets.json?filter=open_and_assigned_to_current_user`)
         .then(response => {
           console.log(response)
           this.tickets = response.data
+          this.loading = false
         })
         .catch(err => console.log(err)
         )
     },
     getUnassignedTickets () {
+      this.loading = true
       this.$http.get(`http://${this.server}/proxy/tickets.json?filter=unassigned`)
         .then(response => {
           console.log(response.data)
           this.tickets = response.data
+          this.loading = false
         }
         )
         .catch(err => console.log(err)
         )
     },
     getOpenTickets () {
+      this.loading = true
       this.$http.get(`http://${this.server}/proxy/tickets.json?filter=open`)
         .then(response => {
           console.log(response)
           this.tickets = response.data
+          this.loading = false
         }
         )
     }
   },
   mounted () {
+    this.loading = true
     this.server = this.$store.getters.getServer
     this.$http.get(`http://${this.server}/proxy/tickets.json?filter=open`)
       .then(response => {
         console.log(response)
         this.tickets = response.data
+        this.loading = false
       })
       .catch(err => console.log(err)
       )

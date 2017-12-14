@@ -2,7 +2,8 @@
   <div v-if="ticket" class="detail-container">
 
     <router-link class="backButton" to="/tickets" tag="button">Back</router-link>
-    <button class="workonButton" @click="workon">Workon!</button>
+    <button v-if="!$store.getters.getCurrentTicket" class="workonButton" @click="workon">Workon Ticket</button>
+    <h1>Ticket Details</h1>
 
     <div class="summary dataDiv">
       <h4>Summary</h4>
@@ -92,7 +93,14 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
+
+  h1 {
+    text-align: center;
+    grid-row: 1 / span 1;
+    grid-column: 1 / -1;
+  }
+
  .detail-container {
    display: grid;
    grid-auto-flow: column;
@@ -110,12 +118,20 @@ export default {
 
   .backButton {
     position: fixed;
-    top: 100px;
+    top: 50px;
+    left: 3px;
+    height: 50px;
+    width: 9vw;
+    font-weight: bold;
   }
 
   .workonButton {
-    grid-column: 11 / span 1;
-    grid-row: 1 /span 1;
+   position: fixed;
+   top: 105px;
+   left: 3px;
+   height: 50px;
+   width: 9vw;
+   font-weight: bold;
   }
 
   .summary {

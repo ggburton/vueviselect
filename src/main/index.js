@@ -19,7 +19,7 @@ const menuTemplate = [
   {
     label: 'Spiceworks',
     click (menuItem, currentWindow) {
-      currentWindow.webContents.send('route', {route: '/spiceworks'})
+      currentWindow.webContents.send('route', {route: '/tickets'})
     }
   },
   {
