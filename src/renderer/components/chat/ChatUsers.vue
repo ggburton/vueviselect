@@ -34,12 +34,10 @@ h2 {
   border-radius: 8px;
   height: 80vh;
   text-align: center;
+  overflow: scroll;
 }
 
 .userDetailsFlex {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
 }
 
 </style>

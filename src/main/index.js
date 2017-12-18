@@ -60,6 +60,7 @@ function createWindow () {
   })
 }
 
+app.setAppUserModelId('org.simulatedgreg.electron-vue')
 app.on('ready', createWindow)
 
 app.on('window-all-closed', () => {

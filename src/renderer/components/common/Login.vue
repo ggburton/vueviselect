@@ -9,13 +9,13 @@
       </div>
       <div class="inputElement">
         <span v-if="badLogin" class="errormsg">*wrong login details</span>
-        <input :class="{ 'error': badLogin}" v-on:input="removeError" type="password" v-model="password" placeholder="password" />
+        <input :class="{ 'error': badLogin}" @keyup.enter="login"  v-on:input="removeError" type="password" v-model="password" placeholder="password" />
       </div>
       <button v-if="!loading" class="inputElement" @click="login">Login</button>
       <spinner v-if="loading"></spinner>
       <div v-if="badLogin">
-        <p class="errormsg">You appear to be having problems logging in.<br>
-        <br>
+        <p class="errormsg">You appear to be having problems logging in.
+        <br><br>
         Maybe I.T. is not your thing.<br> How about a career using simpler tools<br><br>
         Something with a shovel perhaps?</p>
       </div>
@@ -26,7 +26,7 @@
 <script>
 import { corelogin } from '../../api/core'
 import { connectSocket } from '../../api/websocket'
-import { Spinner } from './Spinner.vue'
+import Spinner from './Spinner.vue'
 export default {
   data () {
     return {

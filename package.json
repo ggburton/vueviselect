@@ -1,5 +1,5 @@
 {
-  "name": "vueviselect",
+  "name": "helpdeskfriend",
   "version": "0.1.0",
   "author": "Gregory Burton",
   "description": "An electron-vue project",
@@ -22,7 +22,7 @@
     "postinstall": "npm run lint:fix"
   },
   "build": {
-    "productName": "vueviselect",
+    "productName": "helpdeskfriend",
     "appId": "org.simulatedgreg.electron-vue",
     "directories": {
       "output": "build"

@@ -1,0 +1,588 @@
+{
+  "Auth": {
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6ImdidXJ0b24iLCJleHAiOjE1MTMzMTEwMDksImVtYWlsIjoiR0J1cnRvbkB3Y2MucWxkLmVkdS5hdSJ9.qDi7x9Y6YSJJ7KnYvFapHFOwZ_UjW8FLuOvMFafKjPo",
+    "session_key": "58lawxwwwg0zeslzocsbk9xyvfx9htz7",
+    "server": "ittools.wcc.qld.edu.au"
+  },
+  "Chat": {
+    "active_users": [
+      {
+        "id": 2,
+        "first_name": "Greg",
+        "last_name": "Burton",
+        "username": "gburton",
+        "photo": "/media/photos/gburton.jpg"
+      },
+      {
+      	"id": 3,
+      	"first_name": "Chris",
+      	"last_name": "Goralski",
+      	"username": "cgoralski",
+      	"photo": "/media/photos/cgoralski.jpg"
+      }
+    ],
+    "messages": []
+  },
+  "Counter": {
+    "main": 0
+  },
+  "Network": {
+    "network": {
+      "nodes": [
+        {
+          "id": 1,
+          "label": "SLib-48x2",
+          "group": "online"
+        },
+        {
+          "id": 2,
+          "label": "SE0-48x2",
+          "group": "online"
+        },
+        {
+          "id": 3,
+          "label": "SD1a-48",
+          "group": "online"
+        },
+        {
+          "id": 4,
+          "label": "SO3-24",
+          "group": "online"
+        },
+        {
+          "id": 5,
+          "label": "SBusiness-48x2",
+          "group": "online"
+        },
+        {
+          "id": 6,
+          "label": "ST-24",
+          "group": "online"
+        },
+        {
+          "id": 7,
+          "label": "ST3-24",
+          "group": "online"
+        },
+        {
+          "id": 8,
+          "label": "SProp-24",
+          "group": "online"
+        },
+        {
+          "id": 9,
+          "label": "SA-48",
+          "group": "online"
+        },
+        {
+          "id": 10,
+          "label": "PG8-48",
+          "group": "online"
+        },
+        {
+          "id": 11,
+          "label": "PJ2_2530",
+          "group": "online"
+        },
+        {
+          "id": 12,
+          "label": "PG7-48",
+          "group": "online"
+        },
+        {
+          "id": 13,
+          "label": "PF2-48x2",
+          "group": "online"
+        },
+        {
+          "id": 14,
+          "label": "PE1-48x3",
+          "group": "online"
+        },
+        {
+          "id": 15,
+          "label": "PD4-48x2",
+          "group": "online"
+        },
+        {
+          "id": 16,
+          "label": "PC1-48x2",
+          "group": "online"
+        },
+        {
+          "id": 17,
+          "label": "PC6-24",
+          "group": "online"
+        },
+        {
+          "id": 18,
+          "label": "PA1-48",
+          "group": "online"
+        },
+        {
+          "id": 19,
+          "label": "PH1-24",
+          "group": "online"
+        },
+        {
+          "id": 20,
+          "label": "PH5-24",
+          "group": "online"
+        },
+        {
+          "id": 21,
+          "label": "PK2-48",
+          "group": "online"
+        },
+        {
+          "id": 22,
+          "label": "SF5-48x4",
+          "group": "online"
+        },
+        {
+          "id": 23,
+          "label": "SJ5-48",
+          "group": "online"
+        },
+        {
+          "id": 24,
+          "label": "SH2-24",
+          "group": "online"
+        },
+        {
+          "id": 25,
+          "label": "SJ1-24",
+          "group": "online"
+        },
+        {
+          "id": 26,
+          "label": "SJ6Door-24",
+          "group": "online"
+        },
+        {
+          "id": 27,
+          "label": "SJ6Back-24",
+          "group": "online"
+        },
+        {
+          "id": 28,
+          "label": "SF13-24",
+          "group": "online"
+        },
+        {
+          "id": 29,
+          "label": "SG7-48x3",
+          "group": "online"
+        },
+        {
+          "id": 30,
+          "label": "SC1-48x2",
+          "group": "online"
+        },
+        {
+          "id": 31,
+          "label": "HP-2920-48G-POEP",
+          "group": "online"
+        }
+      ],
+      "edges": [
+        {
+          "from": 2,
+          "to": 1,
+          "id": "f0466285-ff01-4efd-9071-45987434789c"
+        },
+        {
+          "from": 3,
+          "to": 1,
+          "id": "ecad9761-8016-453a-9cd7-0cd7f1b1d3bf"
+        },
+        {
+          "from": 4,
+          "to": 1,
+          "id": "9fa43c7a-2b0e-4292-80a3-0017c47d9a95"
+        },
+        {
+          "from": 5,
+          "to": 1,
+          "id": "9c810f60-04dd-41d7-bf68-528660c9ac3b"
+        },
+        {
+          "from": 6,
+          "to": 5,
+          "id": "595acafd-9864-4eae-80ce-055cfe7dd64c"
+        },
+        {
+          "from": 7,
+          "to": 6,
+          "id": "cb32f9f5-4c9b-464e-8445-71aa42b4e10a"
+        },
+        {
+          "from": 8,
+          "to": 6,
+          "id": "e7254b2f-15df-4cde-8dc7-cf4543ee580b"
+        },
+        {
+          "from": 9,
+          "to": 5,
+          "id": "781d16fb-d900-4199-b140-dc88ba5ed186"
+        },
+        {
+          "from": 10,
+          "to": 1,
+          "id": "5a61633f-ac07-4bd2-885a-3d2805393484"
+        },
+        {
+          "from": 11,
+          "to": 10,
+          "id": "47a6289a-a63e-4b4d-8cad-60017e004f5f"
+        },
+        {
+          "from": 12,
+          "to": 11,
+          "id": "d77b3c3d-5a6f-4c98-a131-f467b363e4c1"
+        },
+        {
+          "from": 13,
+          "to": 10,
+          "id": "eb91ee21-2706-4f25-b095-449b4b885571"
+        },
+        {
+          "from": 14,
+          "to": 10,
+          "id": "05176047-a0d9-4223-a70a-22ca725398c2"
+        },
+        {
+          "from": 15,
+          "to": 10,
+          "id": "274d018b-c125-4985-8a38-e6ecfba3f440"
+        },
+        {
+          "from": 16,
+          "to": 10,
+          "id": "c0eee4a1-0804-48b5-ac72-4c5e10a90d6e"
+        },
+        {
+          "from": 17,
+          "to": 16,
+          "id": "5a361f65-cc0d-4689-a86e-407307a0eb20"
+        },
+        {
+          "from": 18,
+          "to": 10,
+          "id": "95497ecf-12e3-4dde-872b-81f1dafe4e69"
+        },
+        {
+          "from": 19,
+          "to": 10,
+          "id": "00dafe02-0039-4453-902e-5654149030fb"
+        },
+        {
+          "from": 20,
+          "to": 19,
+          "id": "e9be2e55-dd96-4bfa-941f-380b4275bdcb"
+        },
+        {
+          "from": 21,
+          "to": 20,
+          "id": "f5c93012-1b74-40e2-92f0-be7f28fc18a6"
+        },
+        {
+          "from": 22,
+          "to": 1,
+          "id": "3cde51b4-4081-4896-b1d1-7dd8658a5182"
+        },
+        {
+          "from": 23,
+          "to": 22,
+          "id": "d597405c-d1d5-4fb4-9c10-73a08f776f5c"
+        },
+        {
+          "from": 24,
+          "to": 23,
+          "id": "3bd33ebd-afd3-4b6e-a8aa-0f4d95035a2d"
+        },
+        {
+          "from": 25,
+          "to": 24,
+          "id": "c40201a5-8b33-4fe7-ba9a-b89812d58af9"
+        },
+        {
+          "from": 26,
+          "to": 23,
+          "id": "147b2627-7f07-43c8-a9f3-43658cfda548"
+        },
+        {
+          "from": 27,
+          "to": 23,
+          "id": "20dda0ff-9cff-46b4-a249-15cb7e078892"
+        },
+        {
+          "from": 28,
+          "to": 22,
+          "id": "810e99c2-83c6-4e86-8732-422ef0295f1d"
+        },
+        {
+          "from": 29,
+          "to": 22,
+          "id": "59cc77d8-c0c4-49a7-a2d8-d72e5d330288"
+        },
+        {
+          "from": 30,
+          "to": 1,
+          "id": "8f252c8b-d00d-4599-ab26-f5f9d510b23d"
+        },
+        {
+          "from": 31,
+          "to": 30,
+          "id": "ec15ebbc-db62-4c59-84b4-d38cfc85abaa"
+        }
+      ]
+    }
+  },
+  "Schema": {
+    "schema": {
+      "url": "http://ittools.wcc.qld.edu.au/",
+      "title": "Switch API",
+      "description": "",
+      "content": {
+        "api-token-auth": {
+          "create": {
+            "url": "http://ittools.wcc.qld.edu.au/api/api-token-auth/",
+            "method": "post",
+            "encoding": "application/json",
+            "fields": [
+              {
+                "name": "username",
+                "required": true,
+                "location": "form",
+                "description": ""
+              },
+              {
+                "name": "password",
+                "required": true,
+                "location": "form",
+                "description": ""
+              }
+            ],
+            "title": "",
+            "description": "API View that receives a POST with a user's username and password.\n\nReturns a JSON Web Token that can be used for authenticated requests."
+          }
+        },
+        "lockoutMac": {
+          "list": {
+            "url": "http://ittools.wcc.qld.edu.au/api/lockoutMac/",
+            "method": "get",
+            "encoding": "application/json",
+            "fields": [],
+            "title": "",
+            "description": ""
+          },
+          "create": {
+            "url": "http://ittools.wcc.qld.edu.au/api/lockoutMac/",
+            "method": "post",
+            "encoding": "application/json",
+            "fields": [
+              {
+                "name": "mac",
+                "required": true,
+                "location": "form",
+                "description": ""
+              },
+              {
+                "name": "reason",
+                "required": true,
+                "location": "form",
+                "description": ""
+              }
+            ],
+            "title": "",
+            "description": ""
+          },
+          "read": {
+            "url": "http://ittools.wcc.qld.edu.au/api/lockoutMac/{id}/",
+            "method": "get",
+            "encoding": "application/json",
+            "fields": [
+              {
+                "name": "id",
+                "required": true,
+                "location": "path",
+                "description": ""
+              }
+            ],
+            "title": "",
+            "description": ""
+          },
+          "update": {
+            "url": "http://ittools.wcc.qld.edu.au/api/lockoutMac/{id}/",
+            "method": "put",
+            "encoding": "application/json",
+            "fields": [
+              {
+                "name": "id",
+                "required": true,
+                "location": "path",
+                "description": ""
+              },
+              {
+                "name": "mac",
+                "required": true,
+                "location": "form",
+                "description": ""
+              },
+              {
+                "name": "reason",
+                "required": true,
+                "location": "form",
+                "description": ""
+              }
+            ],
+            "title": "",
+            "description": ""
+          },
+          "partial_update": {
+            "url": "http://ittools.wcc.qld.edu.au/api/lockoutMac/{id}/",
+            "method": "patch",
+            "encoding": "application/json",
+            "fields": [
+              {
+                "name": "id",
+                "required": true,
+                "location": "path",
+                "description": ""
+              },
+              {
+                "name": "mac",
+                "required": false,
+                "location": "form",
+                "description": ""
+              },
+              {
+                "name": "reason",
+                "required": false,
+                "location": "form",
+                "description": ""
+              }
+            ],
+            "title": "",
+            "description": ""
+          },
+          "delete": {
+            "url": "http://ittools.wcc.qld.edu.au/api/lockoutMac/{id}/",
+            "method": "delete",
+            "encoding": "application/json",
+            "fields": [
+              {
+                "name": "id",
+                "required": true,
+                "location": "path",
+                "description": ""
+              }
+            ],
+            "title": "",
+            "description": ""
+          }
+        },
+        "port": {
+          "list": {
+            "url": "http://ittools.wcc.qld.edu.au/api/port/",
+            "method": "get",
+            "encoding": "application/json",
+            "fields": [],
+            "title": "",
+            "description": ""
+          },
+          "read": {
+            "url": "http://ittools.wcc.qld.edu.au/api/port/{id}/",
+            "method": "get",
+            "encoding": "application/json",
+            "fields": [
+              {
+                "name": "id",
+                "required": true,
+                "location": "path",
+                "description": ""
+              }
+            ],
+            "title": "",
+            "description": ""
+          }
+        },
+        "switch": {
+          "list": {
+            "url": "http://ittools.wcc.qld.edu.au/api/switch/",
+            "method": "get",
+            "encoding": "application/json",
+            "fields": [],
+            "title": "",
+            "description": ""
+          },
+          "read": {
+            "url": "http://ittools.wcc.qld.edu.au/api/switch/{id}/",
+            "method": "get",
+            "encoding": "application/json",
+            "fields": [
+              {
+                "name": "id",
+                "required": true,
+                "location": "path",
+                "description": ""
+              }
+            ],
+            "title": "",
+            "description": ""
+          }
+        },
+        "user": {
+          "list": {
+            "url": "http://ittools.wcc.qld.edu.au/api/user/",
+            "method": "get",
+            "encoding": "application/json",
+            "fields": [
+              {
+                "name": "username",
+                "required": false,
+                "location": "query",
+                "description": ""
+              }
+            ],
+            "title": "",
+            "description": ""
+          },
+          "read": {
+            "url": "http://ittools.wcc.qld.edu.au/api/user/{id}/",
+            "method": "get",
+            "encoding": "application/json",
+            "fields": [
+              {
+                "name": "id",
+                "required": true,
+                "location": "path",
+                "description": ""
+              },
+              {
+                "name": "username",
+                "required": false,
+                "location": "query",
+                "description": ""
+              }
+            ],
+            "title": "",
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "Spiceworks": {
+    "session_details": {
+      "csrf_token": null,
+      "user_id": null
+    },
+    "worktimer": false,
+    "ticketTimer": {
+      "ticket": null,
+      "starttime": null
+    }
+  }
+}

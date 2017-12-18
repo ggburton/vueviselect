@@ -8,6 +8,7 @@
 
 <script>
 import { webSocketBridge } from '../../api/websocket'
+import { notifyChatMessage } from '../../api/notification'
 import ChatWindow from './ChatWindow'
 import ChatUsers from './ChatUsers'
 
@@ -16,10 +17,11 @@ export default {
     console.log('chat mounted')
     webSocketBridge.demultiplex('chat', (response) => {
       if (response.type === 'getUsers') {
-        console.log('got', response)
         this.$store.dispatch('set_active_users', response.users)
       } else if (response.type === 'message') {
+        console.log(response)
         this.$store.dispatch('append_message', response)
+        notifyChatMessage(response.text, response.user)
       }
     })
     webSocketBridge.stream('chat').send({
