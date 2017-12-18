@@ -1,7 +1,8 @@
 <template>
   <div class="mainContainer">
     <h1>&#128423; NetMummy</h1>
-    <p>Watching your network</p>
+    <p>Spoonfeeding you your network needs</p>
+     <router-link class="lockoutButton" to="/lockoutmacs"><button>Lockout Macs</button></router-link>
     <div class="networkContainer">
       <network-vis class="networkMap" v-on:setCurrent="setCurrent($event)"></network-vis>
       <transition name="fade" mode="out-in">
