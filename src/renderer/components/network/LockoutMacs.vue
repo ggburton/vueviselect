@@ -5,10 +5,11 @@
       <h3>Lockout Macs</h3>
       <div ng-if="lockedMac">
         <div class="lockedMacInstanceHeading">
-          <div id="blockedByLabel">Blocked By:</div>
-          <div id="blockedMacLabel">Blocked Address:</div>
-          <div id="blockedTimeLabel">Time Blocked:</div>
-          <div id="blockedReasonLabel">Blocked reason:</div>
+          <div class="label one">Blocked By:</div>
+          <div class="label two">Blocked Address:</div>
+          <div class="label two">Time Blocked:</div>
+          <div class="label two">Blocked reason:</div>
+          <div class="label one">Action:</div>
         </div>
         <locked-mac-instance v-for="item in lockedMac" :key="item.id" :lockout="item" @removed="removed"></locked-mac-instance>
       </div>
@@ -63,43 +64,32 @@ export default {
 <style lang="scss" scoped>
 
   .lockoutContainer {
+    margin: 0 auto;
     text-align: center;
+    width: 80%;
     border: $thick-border;
     border-radius: 8px;
-    width: 80%;
-    margin: 0 auto;
-    padding: 50px 5px;
-  }
-
-  .currentLockouts {
-    margin: 30px;
+    padding: 50px 10px;
   }
 
   .lockedMacInstanceHeading {
-    grid-template-rows: repeat(2, auto);
-    grid-template-columns: repeat(12, 1fr);
+    display: flex;
+    justify-content: space-around;
+    width: 95%;
+    margin: 0 auto;
   }
 
-  #blockedByLabel {
-    grid-row: 1 / span 2;
-    grid-column: 1 / span 2;
+  .label {
+    font-weight: bold;
   }
 
-  #blockedMacLabel {
-    grid-row: 1 / span 2;
-    grid-column: 3 / span 3;
+   .one {
+    width: 10%;
   }
 
-  #blockedTimeLabel {
-    grid-row: 1 /span 2;
-    grid-column: 6 / span 3;
+  .two {
+    width: 22%;
   }
-
-  #blockedReasonLabel {
-    grid-row: 1 / span 2;
-    grid-column: 9 / span 3;
-  }
-
 
   button {
     @include btn-theme;

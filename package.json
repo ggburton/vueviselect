@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "cleave.js": "^1.0.9",
     "coreapi": "^0.1.1",
     "django-channels": "^1.1.8",
     "moment": "^2.18.1",

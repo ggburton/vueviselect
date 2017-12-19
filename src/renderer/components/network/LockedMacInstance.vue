@@ -1,9 +1,9 @@
 <template>
   <div class="lockedMacInstanceContainer">
-    <div id="blockedBy">{{lockout.lockedBy}}</div>
-    <div id="blockedMac">{{lockout.mac}}</div>
-    <div id="blockedTime">{{formatTime(lockout.lockedTime)}}</div>
-    <div id="blockedReason">{{lockout.reason}}</div>
+    <div class="item one">{{lockout.lockedBy}}</div>
+    <div class="item two">{{lockout.mac}}</div>
+    <div class="item two">{{formatTime(lockout.lockedTime)}}</div>
+    <div class="item two">{{lockout.reason}}</div>
     <button @click="remove">UnBlock</button>
   </div>
 </template>
@@ -25,41 +25,26 @@ export default {
 <style lang="scss" scoped>
 
   .lockedMacInstanceContainer {
+    margin: 10px;
     border: $thin-border;
     border-radius: 2px;
-    display: grid;
-    grid-template-rows: repeat(2, auto);
-    grid-template-columns: repeat(12, 1fr);
-    grid-row-gap: 8px;
-    grid-auto-flow: row;
+    display: flex;
     padding: 8px;
+    justify-content: space-around;
+    align-items: center;
   }
 
-  #blockedBy {
-    grid-row: 2 / span 1;
-    grid-column: 1 / span 2;
+  .one {
+    width: 10%;
   }
 
-  #blockedMac {
-    grid-row: 2 / span 1;
-    grid-column: 3 /span 3;
-  }
-
-  #blockedTime {
-    grid-row: 2 / span 1;
-    grid-column: 6 / span 3;
-  }
-
-  #blockedReason {
-    grid-row: 2 / span 1;
-    grid-column: 9 / span 3;
+  .two {
+    width: 22%;
   }
 
   button {
-    grid-row: 2 /span 1;
-    grid-column: 12 /span 1;
-    @include btn-theme;
+    width: 10%;
+    text-align: center;
   }
-
 
 </style>
