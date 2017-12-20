@@ -3,7 +3,7 @@
     <h3>Lockout mac form</h3>
     <form v-on:submit.prevent="onSubmit">
       <div>
-        <input class="macField" @keyup="echo" type="text" v-model="mac" pattern="([0-9A-Fa-f]{2})[:-]{5}[0-9A-Fa-f]{2})" placeholder="12:34:56:78:ab:ef"/>
+        <input class="macField" @keyup="echo" type="text" v-model="mac" ref="macinput"/>
       </div>
       <div>
         <textarea class="textAreaField" cols="3" rows="5" type="text" v-model="reason" placeholder="reason"></textarea>
@@ -18,6 +18,7 @@
 
 <script>
 import { useClient } from '../../api/core'
+import Inputmask from 'inputmask'
 // import Cleave from 'cleave.js'
 
 export default {
@@ -26,6 +27,10 @@ export default {
       mac: null,
       reason: null
     }
+  },
+  mounted () {
+    var inputmask = new Inputmask('mac')
+    inputmask.mask(this.$refs.macinput)
   },
   methods: {
     onSubmit () {

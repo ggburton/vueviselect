@@ -3,7 +3,7 @@
     <h1>&#128423; NetMummy</h1>
     <div class="currentLockouts">
       <h3>Lockout Macs</h3>
-      <div ng-if="lockedMac">
+      <div v-if="lockedMac">
         <div class="lockedMacInstanceHeading">
           <div class="label one">Blocked By:</div>
           <div class="label two">Blocked Address:</div>
@@ -13,7 +13,7 @@
         </div>
         <locked-mac-instance v-for="item in lockedMac" :key="item.id" :lockout="item" @removed="removed"></locked-mac-instance>
       </div>
-      <div ng-else>There are no blocked macs at the moment</div>
+      <div v-else>There are no blocked macs at the moment</div>
     </div>
     <router-link to="/lockoutform"><button>Block New Mac</button></router-link>
   </div>
@@ -93,6 +93,7 @@ export default {
 
   button {
     @include btn-theme;
+    margin-top: 20px;
   }
 
 </style>

@@ -29,6 +29,14 @@ export default {
         'type': 'getUsers'
       }
     })
+    setInterval(() => {
+      console.log('heartbeat')
+      webSocketBridge.stream('chat').send({
+        'content': {
+          'type': 'heartbeat'
+        }
+      })
+    }, 30000)
   },
   components: {
     ChatUsers,
