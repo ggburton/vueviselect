@@ -2,7 +2,7 @@
 const state = {
   token: null,
   session_key: null,
-  server: 'localhost:8000'
+  server: 'ittools.wcc.qld.edu.au'
 }
 
 const getters = {
