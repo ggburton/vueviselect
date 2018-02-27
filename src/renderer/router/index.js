@@ -18,10 +18,22 @@ export default new Router({
       component: require('@/components/network/LockoutMacs').default
     },
     {
+      path: '/findDevice',
+      name: 'find-device',
+      beforeEnter: requireADAuth,
+      component: require('@/components/network/FindDevice').default
+    },
+    {
       path: '/lockoutform',
       name: 'lockout-form',
       beforeEnter: requireADAuth,
       component: require('@/components/network/LockoutMacForm').default
+    },
+    {
+      path: '/networkLanding',
+      name: 'network-landing',
+      beforeEnter: requireADAuth,
+      component: require('@/components/network/NetworkLandingPage').default
     },
     {
       path: '/network',

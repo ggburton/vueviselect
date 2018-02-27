@@ -19,6 +19,9 @@
         Maybe I.T. is not your thing.<br> How about a career using simpler tools<br><br>
         Something with a shovel perhaps?</p>
       </div>
+      <div v-if="serveroffline">
+        <p class="errormsg">The server is not responding. It may be offline</p>
+      </div>
     </div>
   </div>
 </template>
@@ -33,7 +36,8 @@ export default {
       username: null,
       password: null,
       badLogin: false,
-      loading: false
+      loading: false,
+      serveroffline: false
     }
   },
   components: {
@@ -41,9 +45,8 @@ export default {
   },
   methods: {
     removeError () {
-      if (this.badLogin === true) {
-        this.badLogin = false
-      }
+      this.badLogin = false
+      this.serveroffline = false
     },
     login () {
       this.loading = true
@@ -65,9 +68,18 @@ export default {
           }
         })
         .catch(err => {
-          console.log(err)
-          this.badLogin = true
           this.loading = false
+          if (err.response) {
+            if (err.response.status === 400) {
+              this.badLogin = true
+            } else if (err.response.status === 500) {
+              console.log(err.response.status)
+              console.log('could not access the server')
+            }
+          } else if (err.request) {
+            console.log(err.request)
+            this.serveroffline = true
+          }
         })
     }
   }

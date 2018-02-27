@@ -16,6 +16,7 @@
       <div v-else>There are no blocked macs at the moment</div>
     </div>
     <router-link to="/lockoutform"><button>Block New Mac</button></router-link>
+    <router-link to="/networkLanding"><button>NetMummy Home</button></router-link>
   </div>
 </template>
 

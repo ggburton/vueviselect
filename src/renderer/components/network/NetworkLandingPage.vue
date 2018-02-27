@@ -2,27 +2,28 @@
   <div class="container">
 
     <div class="heading">
-      <h1>&#128435; Help Desk Friend</h1>
-      <p class="lead">Helping you help your users</p>
+      <h1>&#128423; NetMummy</h1>
+      <p>Spoonfeeding you your network needs</p>
+       <router-link class="lockoutButton" to="/landing"><button>Main Menu</button></router-link>
     </div>
 
-    <div class="app" id="netmummy" @click="goto('/networkLanding')">
-        <h3>NetMummy</h3>
-        <h1 class="icon">&#128423;</h1>
-        <p class="lead">A mini version of imc with just the important bits</p>
+    <div class="app" id="netmummy" @click="goto('/network')">
+        <h3>NetMap</h3>
+        <h1 class="icon">&#128506;</h1>
+        <p class="lead">The logical layout of your network</p>
     </div>
 
-    <div class="app" id="ticketoff" @click="goto('/tickets')">
-      <h3>Ticket Off</h3>
-      <h1 class="icon">&#127915;</h1>
-      <p class="lead">A simple interface to manage and monitor your spiceworks tickets.</p>
+    <div class="app" id="ticketoff" @click="goto('/lockoutMacs')">
+      <h3>McBlock</h3>
+      <h1 class="icon">&#128721;</h1>
+      <p class="lead">View, Block and Unblock macs from ALL of your switches</p>
 
     </div>
 
-    <div class="app" id="backchat" @click="goto('/chat')">
-      <h3>BackChat</h3>
-      <h1 class="icon">📢</h1>
-      <p class="lead"><span class="quote">If only we had a desktop chat application for "work"</span><br><br>...well now you do!</p>
+    <div class="app" id="backchat" @click="goto('/findDevice')">
+      <h3>SearchDog</h3>
+      <h1 class="icon">&#128021;</h1>
+      <p class="lead">Searchdog will find what switch and port any connected IP address is on</p>
     </div>
 
   </div>
@@ -78,6 +79,7 @@ h1 {
   text-align: center;
   height: 150px;
   width: 95%;
+  padding-bottom: 10px;
 }
 
 #netmummy {
@@ -102,6 +104,10 @@ h1 {
 .lead {
   font-weight: bold;
   margin: 10px;
+}
+
+button {
+    @include btn-theme;
 }
 
 </style>

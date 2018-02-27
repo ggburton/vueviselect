@@ -55,7 +55,9 @@ export default {
       const params = {id: this.current}
       useClient(action, params)
         .then(data => { this.wSwitch = data })
-        .catch(err => console.log('Opps: ', err))
+        .catch(err => {
+          console.log(err)
+        })
     }
     setInterval(() => {
       this.uptime += 1000

@@ -1,8 +1,10 @@
 <template>
   <div class="mainContainer">
-    <h1>&#128423; NetMummy</h1>
-    <p>Spoonfeeding you your network needs</p>
-     <router-link class="lockoutButton" to="/lockoutmacs"><button>Lockout Macs</button></router-link>
+    <h1>&#128506; NetMap</h1>
+    <div class="navigationButtons">
+     <router-link class="lockoutButton" to="/networkLanding"><button>NetMummy Main</button></router-link>
+     <router-link class="lockoutButton" to="/landing"><button>Home</button></router-link>
+    </div>
     <div class="networkContainer">
       <network-vis class="networkMap" v-on:setCurrent="setCurrent($event)"></network-vis>
       <transition name="fade" mode="out-in">
@@ -44,6 +46,13 @@
   display: flex;
 }
 
+.navigationButtons {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
 .networkMap {
   flex-grow: 1;
 }
@@ -82,4 +91,7 @@ p {
   opacity: 0;
 }
 
+ button {
+    @include btn-theme;
+  }
 </style>

@@ -3,7 +3,7 @@
     <h3>Lockout mac form</h3>
     <form v-on:submit.prevent="onSubmit">
       <div>
-        <input class="macField" @keyup="echo" type="text" v-model="mac" ref="macinput"/>
+        <input class="macField" type="text" v-model="mac" ref="macinput"/>
       </div>
       <div>
         <textarea class="textAreaField" cols="3" rows="5" type="text" v-model="reason" placeholder="reason"></textarea>
@@ -44,9 +44,6 @@ export default {
           console.log(response)
           this.$router.push('/lockoutmacs')
         })
-    },
-    echo () {
-      console.log(this.mac)
     }
   }
 }
